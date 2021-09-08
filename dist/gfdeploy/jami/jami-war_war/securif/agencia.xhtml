@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Agencia</title>
+         <style>
+            div.botao {
+      margin-left: 350px;
+    }
+        
+    body {
+         background-color: #3cb371;
+    }
+    
+    div.cadastro {
+        margin-top: 10px;
+        margin: 0px 0px 0px 160px;
+    }
+    
+    .ocupada .ui-panel-titlebar {
+    background: #3cb371;
+    color: #000000;
+    text-align: center;
+    font-size: 20px;
+}
+
+
+            .topnav-home {
+        overflow: hidden;
+        padding-top: 10px;
+    }
+    
+   .topnav-home a {
+        float: left;
+        display: block;
+        color: #0000ff;
+        font-style: initial;
+        font-weight: bold;
+        padding: 14px 8px;
+        text-decoration: none;
+        margin-top: 20px;
+     }
+     
+     .topnav-home a:hover {
+         color: #ff007f;
+                 
+     }
+      div.botaocadastros {
+          margin-left: 500px;
+      }
+
+        </style>
+    </h:head>
+    <h:body>
+        
+        <h:form id="formPermissoes"> 
+            <p:messages autoUpdate="true"/>        
+           
+        <p:panel id="panel" header="Cadastro de Agência" styleClass="ocupada"> 
+               <div class="cor_painel">
+               <div class="cadastro">
+           <h:panelGrid columns="6" cellpadding="5">  
+            <h:outputLabel for="numero_agencia" value="Numero Agência:" />
+            <p:inputMask id="numero_agencia" value="#{agenciaJSFManagedBean.numero_agencia}" mask="9999-9" size="6" />
+            <h:outputLabel for="nome_agencia" value="Nome:" />
+            <h:inputText id="nome_agencia" value="#{agenciaJSFManagedBean.nome_agencia}" size="34" />
+            <h:outputLabel for="fone" value="Fone:" />
+            <p:inputMask id="fone" value="#{agenciaJSFManagedBean.fone_agencia}" mask="(99) 9999-9999" size="12" />
+           </h:panelGrid>
+           <h:panelGrid columns="8" cellpadding="5">
+            <h:outputLabel for="email_agencia" value="Email :" />
+            <p:inputText id="email_agencia" value="#{agenciaJSFManagedBean.email_agencia}" size="28"/>
+            <p:watermark for="email_agencia" value="digiteumemail@valido " />
+            <p:message for="email_agencia" display="tooltip" />
+            <h:outputLabel for="rua" value="Rua:" />
+            <h:selectOneMenu id="rua" value="#{agenciaJSFManagedBean.rua_agencia}">
+            <f:selectItem itemValue="Selecione" itemLabel="--Selecione--" />
+            <f:selectItems id="rua_agencia" value="#{agenciaJSFManagedBean.nome_ruas}" />
+            </h:selectOneMenu>
+             <h:outputLabel for="numero" value="Numero:" />
+             <p:spinner id="numero" value="#{agenciaJSFManagedBean.numero_rua_agencia}" size="7" stepFactor="1" />
+            </h:panelGrid>
+               </div>
+                    <br/>
+            <div class="botaocadastros">
+                <div class="topnav-home">
+                   <a href="http://localhost:8080/jami-war/securif/financeiro.xhtml">VOLTAR</a>
+                   <a href="http://localhost:8080/jami-war/securi/endereco.xhtml">ENDEREÇO</a>
+                   </div>
+            </div>
+                   <br/>
+                    <br/>
+        <div class="botao">  
+            <p:commandButton id="cadastrar" value="CADASTRAR" update="panel" action="#{agenciaJSFManagedBean.cadastrarAgencia()}" 
+                             style=" background-color: #00ff00" ajax="false">
+            <p:resetInput target="panel" />
+            </p:commandButton>
+            <p:commandButton id="buscar" value="BUSCAR" update="panel" action="#{agenciaJSFManagedBean.buscarAgencia()}" 
+                             style=" background-color: #00ff00" ajax="false">
+            <p:resetInput target="panel" />
+            </p:commandButton>
+            <p:commandButton id="atualizar" value="ATUALIZAR" update="panel" action="#{agenciaJSFManagedBean.atualizarAgencia()}" 
+                             style=" background-color: #00ff00" ajax="false">
+            <p:resetInput target="panel" />
+            </p:commandButton>
+            <p:commandButton id="excluir" value="EXCLUIR" update="panel" action="#{agenciaJSFManagedBean.excluirAgencia()}" 
+                             style=" background-color: #00ff00" ajax="false">   
+            <p:resetInput target="panel" />
+            </p:commandButton>
+        </div>
+               </div>
+        </p:panel>
+    </h:form>
+    </h:body>
+</html>
+

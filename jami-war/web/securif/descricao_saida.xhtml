@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>DescricaoSaida</title>
+         <style>
+            div.botao {
+      margin-left: 350px;
+    }
+        
+    body {
+         background-color: #3cb371;
+    }
+    
+    div.cadastro {
+        margin-top: 10px;
+        margin: 0px 0px 0px 330px;
+    }
+    
+    .ocupada .ui-panel-titlebar {
+    background: #3cb371;
+    color: #000000;
+    text-align: center;
+    font-size: 20px;
+}
+
+      div.botaocadastros {
+          margin-left: 290px;
+      }
+      
+                .topnav-home {
+        overflow: hidden;
+        padding-top: 10px;
+    }
+    
+   .topnav-home a {
+        float: left;
+        display: block;
+        color: #0000ff;
+        font-style: initial;
+        font-weight: bold;
+        padding: 14px 8px;
+        text-decoration: none;
+        margin-top: 20px;
+     }
+     
+     .topnav-home a:hover {
+         color: #ff007f;
+                 
+     }
+      div.botaocadastros {
+          margin-left: 330px;
+      }
+
+        </style>
+    </h:head>
+    <h:body>
+        <h:form id="formPermissoes">
+        <p:messages autoUpdate="true"/>
+            
+        <p:panel id="panel" header="Cadastrar Descrição Saída" styleClass="ocupada"> 
+               <div class="cor_painel">
+               <div class="cadastro">
+           <h:panelGrid columns="2" cellpadding="5">  
+            
+               <h:outputLabel for="descricao_saida" value="Descriçao:" />
+               <h:inputText id="descricao_saida" value="#{descricaoSaidaSFManagedBean.nome_descricao_saida}" size="38" />
+            </h:panelGrid>
+               </div>
+                    <br/>
+                  <div class="botaocadastros">
+                <div class="topnav-home">
+                   <a href="http://localhost:8080/jami-war/securif/prestadora.xhtml">PRESTADORA SERVIÇOS</a>
+                   <a href="http://localhost:8080/jami-war/securif/prestador_fisico.xhtml">PRESTADOR FÍSICO</a>
+                   <a href="http://localhost:8080/jami-war/securif/fornecedor.xhtml">FORNECEDOR</a>
+                   </div>
+                   </div> 
+                    <br/>
+                    <br/>
+        <div class="botao">  
+            <p:commandButton id="cadastrar" value="CADASTRAR" update="panel" action="#{descricaoSaidaSFManagedBean.cadastrarDescricaoSaida()}" 
+                             style=" background-color: #00ff00" ajax="false">
+            <p:resetInput target="panel" />
+            </p:commandButton>
+            <p:commandButton id="buscar" value="BUSCAR" update="panel" action="#{descricaoSaidaSFManagedBean.buscarDescricaoSaida()}" 
+                             style=" background-color: #00ff00" ajax="false">
+            <p:resetInput target="panel" />
+            </p:commandButton>
+            <p:commandButton id="atualizar" value="ATUALIZAR" update="panel" action="#{descricaoSaidaSFManagedBean.atualizarDescricaoSaida()}" 
+                             style=" background-color: #00ff00" ajax="false">
+            <p:resetInput target="panel" />
+            </p:commandButton>
+            <p:commandButton id="excluir" value="EXCLUIR" update="panel" action="#{descricaoSaidaSFManagedBean.excluirDescricaoSaida()}" 
+                             style=" background-color: #00ff00" ajax="false">  
+            <p:resetInput target="panel" />
+            </p:commandButton>
+        </div>
+               </div>
+        </p:panel>
+    </h:form>
+    </h:body>
+</html>
+

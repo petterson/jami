@@ -1,0 +1,275 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Beneficiario</title>
+    <style>
+            div.botao {
+      margin-left: 300px;
+    }
+        
+    body {
+         background-color: #3cb371;
+    }
+    
+    div.endereco_contato {
+        margin-top: 10px;
+        margin: 0px 0px 0px 60px;
+    }
+    
+    .ocupada .ui-panel-titlebar {
+    background: #3cb371;
+    color: #000000;
+    text-align: center;
+    font-size: 20px;
+}
+
+
+            .topnav-home {
+        overflow: hidden;
+        padding-top: 10px;
+    }
+    
+   .topnav-home a {
+        float: left;
+        display: block;
+        color: #0000ff;
+        font-style: initial;
+        font-weight: bold;
+        padding: 14px 8px;
+        text-decoration: none;
+        margin-top: 20px;
+     }
+     
+     .topnav-home a:hover {
+         color: #ff007f;
+                 
+     }
+      div.botaocadastros {
+          margin-left: 430px;
+      }
+
+        </style>
+    </h:head>
+    <h:body> 
+        <h:form id="formPermissoes"> 
+        <p:messages autoUpdate="true"/>     
+           
+        <p:panel id="panel" header="Cadastro Social" styleClass="ocupada"> 
+            <div class="endereco_contato">
+           <h:panelGrid columns="8" cellpadding="5"> 
+            <h:outputLabel for="nome" value="Nome:" />
+            <h:inputText id="nome" value="#{socialJSFManagedBean.nome_social}" size="40" />
+            <h:outputLabel for="cpf" value="CPF:" />
+            <p:inputMask id="cpf" value="#{socialJSFManagedBean.cpf_social}" mask="999.999.999-99" size="11" />
+            <h:outputLabel for="rg" value="RG:" />
+            <p:inputMask id="rg" value="#{socialJSFManagedBean.rg_social}" mask="99.999.999-9" size="10" />
+            <h:outputLabel for="fone" value="Fone:" />
+            <p:inputMask id="fone" value="#{socialJSFManagedBean.fone_social}" mask="(99) 9999-9999" size="12" />
+           </h:panelGrid>
+            <h:panelGrid columns="6" cellpadding="5">  
+            <h:outputLabel for="profissao" value="Profissão:" />
+            <h:inputText id="profissao" value="#{socialJSFManagedBean.profissao_social}" size="36" />
+            <h:outputLabel for="situacao" value="Situação:" />
+            <h:selectOneMenu id="situacao" value="#{socialJSFManagedBean.situacao_social}">
+            <f:selectItem itemLabel="-- Selecione --" />
+            <f:selectItem itemValue="Empregado" itemLabel="Empregado" />
+            <f:selectItem itemValue="Desempregado" itemLabel="Desempregado" />
+            <f:selectItems id="situacaos" value="#{socialJSFManagedBean.list_situacoes}" />
+            </h:selectOneMenu>
+            <h:outputLabel for="rua" value="Rua:" />
+            <h:selectOneMenu id="rua" value="#{socialJSFManagedBean.rua_social}">
+            <f:selectItem itemLabel="--Selecione--" />
+            <f:selectItems id="endereco_social" value="#{socialJSFManagedBean.nome_ruas}" />
+            </h:selectOneMenu>      
+           </h:panelGrid> 
+            <h:panelGrid columns="8" cellpadding="5">  
+            <h:outputLabel for="nro" value="NRO:" />
+             <p:spinner id="nro" value="#{socialJSFManagedBean.numero_social}" size="7" stepFactor="1" />
+            <h:outputLabel for="complemento" value="Complemento:" />
+            <p:inputText id="complemento" value="#{socialJSFManagedBean.complemento_social}" size="26" /> 
+            <h:outputLabel for="data" value="Data Cadastro:" />
+            <p:calendar id="data" timeZone="America/Sao_Paulo" pattern="dd/MM/yyyy" locale="pt_BR" mask="true"
+                        value="#{socialJSFManagedBean.data_cadastro_social}" maxdate="#{socialJSFManagedBean.dataAtual()}" size="10" ></p:calendar> 
+            <h:outputLabel for="data_nasc" value="Data Nasc:" />
+            <p:calendar id="data_nasc" timeZone="America/Sao_Paulo" pattern="dd/MM/yyyy" mask="true" 
+                        locale="pt_BR" value="#{socialJSFManagedBean.data_nasc}" size="10" ></p:calendar>
+            </h:panelGrid>
+            <br/>
+            <br/>
+            <div class="meio">
+            <h:panelGrid columns="4" cellpadding="5">
+            <h:outputLabel for="gestantes" value="Gestante na Família ?" />
+            <h:selectOneMenu id="gestantes" value="#{socialJSFManagedBean.gestante}">
+            <f:selectItem itemLabel="-- Selecione --" />
+            <f:selectItem itemValue="Não" itemLabel="Não" />
+            <f:selectItem itemValue="Uma" itemLabel="Uma" />
+            <f:selectItem itemValue="Duas" itemLabel="Duas"/>
+            <f:selectItem itemValue="Três" itemLabel="Três"/>
+            <f:selectItem itemValue="Mais" itemLabel="Mais" />
+            <f:selectItems id="gestante" value="#{socialJSFManagedBean.list_gestantes}" />
+            </h:selectOneMenu>
+            <h:outputLabel for="obs1" value="Observações" />
+            <p:inputTextarea id="obs1" rows="4" cols="60" value="#{socialJSFManagedBean.obs_gestante}" queryDelay="750" minQueryLength="4" />
+            <h:outputLabel for="acamadas" value="Acamados na Família ?" />
+            <h:selectOneMenu id="acamadas" value="#{socialJSFManagedBean.acamado}">
+            <f:selectItem itemValue="-- Selecione --" itemLabel="-- Selecione --" />
+            <f:selectItem itemValue="Não" itemLabel="Não" />
+            <f:selectItem itemValue="Uma" itemLabel="Uma" />
+            <f:selectItem itemValue="Duas" itemLabel="Duas"/>
+            <f:selectItem itemValue="Três" itemLabel="Três"/>
+            <f:selectItem itemValue="Mais" itemLabel="Mais" />
+            <f:selectItems id="acamada" value="#{socialJSFManagedBean.list_acamados}" />
+            </h:selectOneMenu>
+            <h:outputLabel for="obs2" value="Observações" />
+            <p:inputTextarea id="obs2" rows="4" cols="60" value="#{socialJSFManagedBean.obs_acamado}" queryDelay="750" minQueryLength="4" /> 
+            <h:outputLabel for="deficietes" value="Deficiênte na Família ?" />
+            <h:selectOneMenu id="deficientes" value="#{socialJSFManagedBean.deficiente}">
+            <f:selectItem itemLabel="-- Selecione --" />
+            <f:selectItem itemValue="Não" itemLabel="Não" />
+            <f:selectItem itemValue="Um" itemLabel="Um" />
+            <f:selectItem itemValue="Dois" itemLabel="Dois"/>
+            <f:selectItem itemValue="Três" itemLabel="Três"/>
+            <f:selectItem itemValue="Mais" itemLabel="Mais" />
+            <f:selectItems id="deficiente" value="#{socialJSFManagedBean.list_deficientes}" />
+            </h:selectOneMenu>
+            <h:outputLabel for="obs3" value="Observações" />
+            <p:inputTextarea id="obs3" rows="4" cols="60" value="#{socialJSFManagedBean.obs_deficiente}" queryDelay="750" minQueryLength="4" />
+            </h:panelGrid>
+            </div>
+            <br/>
+            <br/>
+            <div class="final">
+            <h:panelGrid columns="6" cellpadding="5"> 
+            <h:outputLabel for="adultos" value="Adulto Acima 30 Anos:" />
+            <h:selectOneMenu id="adultos" value="#{socialJSFManagedBean.nro_adultos}">
+            <f:selectItem itemLabel="-- Selecione --" />
+            <f:selectItem itemValue="Um" itemLabel="Um" />
+            <f:selectItem itemValue="Dois" itemLabel="Dois" />
+            <f:selectItem itemValue="Três" itemLabel="Três"/>
+            <f:selectItem itemValue="Quatro" itemLabel="Quatro"/>
+            <f:selectItem itemValue="Cinco" itemLabel="Cinco" />
+            <f:selectItems id="adulto" value="#{socialJSFManagedBean.list_adultos}" />
+            </h:selectOneMenu>
+            <h:outputLabel for="jovens" value="Joven Entre (18 a 30) Anos:" />
+            <h:selectOneMenu id="jovens" value="#{socialJSFManagedBean.nro_jovens}">
+            <f:selectItem itemLabel="-- Selecione --" />
+            <f:selectItem itemValue="Não" itemLabel="Não" />
+            <f:selectItem itemValue="Um" itemLabel="Um" />
+            <f:selectItem itemValue="Dois" itemLabel="Dois" />
+            <f:selectItem itemValue="Três" itemLabel="Três"/>
+            <f:selectItem itemValue="Quatro" itemLabel="Quatro"/>
+            <f:selectItem itemValue="Cinco" itemLabel="Cinco" />
+            <f:selectItems id="joven" value="#{socialJSFManagedBean.list_joves}" />
+            </h:selectOneMenu>
+            <h:outputLabel for="adolecentes" value="Adolecente (12 a 17) Anos:" />
+            <h:selectOneMenu id="adolecentes" value="#{socialJSFManagedBean.nro_adolecentes}">
+            <f:selectItem itemLabel="-- Selecione --" />
+            <f:selectItem itemValue="Não" itemLabel="Não" />
+            <f:selectItem itemValue="Um" itemLabel="Um" />
+            <f:selectItem itemValue="Dois" itemLabel="Dois" />
+            <f:selectItem itemValue="tres" itemLabel="Três"/>
+            <f:selectItem itemValue="Quatro" itemLabel="Quatro"/>
+            <f:selectItem itemValue="Cinco" itemLabel="Cinco" />
+            <f:selectItems id="adolecente" value="#{socialJSFManagedBean.list_adolecentes}" />
+            </h:selectOneMenu>   
+            </h:panelGrid>
+            <h:panelGrid columns="6" cellpadding="5">
+            <h:outputLabel for="criancas" value="Criança (5 a 11) Anos:" />
+            <h:selectOneMenu id="criancas" value="#{socialJSFManagedBean.nro_criancas}">
+            <f:selectItem itemLabel="-- Selecione --" />
+            <f:selectItem itemValue="Não" itemLabel="Não" />
+            <f:selectItem itemValue="Um" itemLabel="Um" />
+            <f:selectItem itemValue="Dois" itemLabel="Dois" />
+            <f:selectItem itemValue="Três" itemLabel="Três"/>
+            <f:selectItem itemValue="Quatro" itemLabel="Quatro"/>
+            <f:selectItem itemValue="Cinco" itemLabel="Cinco" />
+            <f:selectItems id="crianca" value="#{socialJSFManagedBean.list_criancas}" />
+            </h:selectOneMenu>            
+            <h:outputLabel for="bebes" value="Bebê menor que 5 Anos:" />
+            <h:selectOneMenu id="bebes" value="#{socialJSFManagedBean.nro_bebes}">
+            <f:selectItem itemLabel="-- Selecione --" />
+            <f:selectItem itemValue="Não" itemLabel="Não" />
+            <f:selectItem itemValue="Um" itemLabel="Um" />
+            <f:selectItem itemValue="Dois" itemLabel="Dois" />
+            <f:selectItem itemValue="Três" itemLabel="Três"/>
+            <f:selectItem itemValue="Quatro" itemLabel="Quatro"/>
+            <f:selectItem itemValue="Cinco" itemLabel="Cinco" />
+            <f:selectItems id="bebe" value="#{socialJSFManagedBean.list_beles}" />
+            </h:selectOneMenu>
+            <h:outputLabel for="instrucaos" value="Instrução do Chefe da Família:" />
+            <h:selectOneMenu id="instrucaos" value="#{socialJSFManagedBean.instrucao}">
+            <f:selectItem itemLabel="-- Selecione --" />
+            <f:selectItem itemValue="Analfabeto" itemLabel="Analfabeto" />
+            <f:selectItem itemValue="Primário" itemLabel="Primário" />
+            <f:selectItem itemValue="Fundamental" itemLabel="Fundamental"/>
+            <f:selectItem itemValue="Médio" itemLabel="Médio"/>
+            <f:selectItem itemValue="Tecnico" itemLabel="Tecnico" />
+            <f:selectItem itemValue="Graduação" itemLabel="Graduação" />
+            <f:selectItems id="instrucao" value="#{socialJSFManagedBean.list_instrucoes}" />
+            </h:selectOneMenu>
+            </h:panelGrid>
+            <div class="renda">
+           <h:panelGrid columns="4" cellpadding="5"> 
+            <h:outputLabel for="rendas" value="Renda Mensal da Família:" />
+            <h:selectOneMenu id="rendas" value="#{socialJSFManagedBean.renda_mensal}">
+            <f:selectItem itemLabel="-- Selecione --" />
+            <f:selectItem itemValue="0 a 1 SM" itemLabel="0 a 1 SM" />
+            <f:selectItem itemValue="1 a 3 SM" itemLabel="1 a 3 SM" />
+            <f:selectItem itemValue="3 a 6 SM" itemLabel="3 a 6 SM"/>
+            <f:selectItem itemValue="6 a 10 SM" itemLabel="6 a 10 SM"/>
+            <f:selectItem itemValue="maior" itemLabel="Acima 10 SM" />
+            <f:selectItems id="renda" value="#{socialJSFManagedBean.list_rendas}" />
+            </h:selectOneMenu>
+            <h:outputLabel for="auxilio" value="Auxílio do Governo:" />
+            <h:selectOneMenu id="auxilio" value="#{socialJSFManagedBean.auxilio_governo}">
+            <f:selectItem itemLabel="-- Selecione --" />
+            <f:selectItem itemValue="Não" itemLabel="Não" />
+            <f:selectItem itemValue="Bolsa Família" itemLabel="Bolsa  Família" />
+            <f:selectItem itemValue="PETI" itemLabel="PETI"/>
+            <f:selectItem itemValue="BPC" itemLabel="BPC"/>
+            <f:selectItem itemValue="Outro" itemLabel="Outro" />
+            <f:selectItems id="auxilio_social" value="#{socialJSFManagedBean.list_auxilios}" />
+            </h:selectOneMenu>
+            </h:panelGrid>
+            </div>
+            </div>
+            <br/>
+            <div class="botaocadastros">
+                <div class="topnav-home">
+                   <a href="http://localhost:8080/jami-war/securi/endereco.xhtml">CADASTRO ENDEREÇO</a>
+                   </div>
+            </div>
+            <br/>
+            <br/>
+            <p:growl id="growl" life="2000" showDetail="true" sticky="true" />
+        <div class="botao">  
+            <p:commandButton id="cadastrar" value="CADASTRAR" update="panel" action="#{socialJSFManagedBean.cadastrarSocial()}" 
+                             style=" background-color: #00ff00" ajax="false">
+            <p:resetInput target="panel" />
+            </p:commandButton>
+            <p:commandButton id="buscar" value="BUSCAR" update="panel" action="#{socialJSFManagedBean.buscarSocial()}" 
+                             style=" background-color: #00ff00" ajax="false">
+            <p:resetInput target="panel" />
+            </p:commandButton>
+            <p:commandButton id="atualizar" value="ATUALIZAR" update="panel" action="#{socialJSFManagedBean.atualizarSocial()}" 
+                             style=" background-color: #00ff00" ajax="false">
+            <p:resetInput target="panel" />
+            </p:commandButton>
+            <p:commandButton id="excluir" value="EXCLUIR" update="panel" action="#{socialJSFManagedBean.excluirSocial()}" 
+                             style=" background-color: #00ff00" ajax="false"> 
+            <p:resetInput target="panel" />
+            </p:commandButton>            
+        </div>
+            <br/>
+            </div>
+         </p:panel> 
+        </h:form>
+    </h:body>
+</html>
+
+
+

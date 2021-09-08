@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+         <title>Contribuinte</title>
+      <style>
+            div.botao {
+      margin-left: 490px;
+    }
+        
+    body {
+         background-color: #3cb371;
+    }
+    
+    div.cadastro {
+        margin-top: 10px;
+        margin: 0px 0px 0px 80px; 
+         
+        
+    }
+    
+    .ocupada .ui-panel-titlebar {
+    background: #3cb371;
+    color: #000000;
+    text-align: center;
+    font-size: 20px;
+}
+
+      div.botaocadastros {
+         margin-left: 490px;
+    }
+
+        </style>
+        
+        <script type="text/javascript">
+     
+    /**
+     * Bean validator
+     */
+    PrimeFaces.validator['Email'] = {
+         
+        pattern: /\S+@\S+/,
+                 
+        MESSAGE_ID: 'org.primefaces.examples.validate.email.message',
+         
+        validate: function(element, value) {
+            var vc = PrimeFaces.util.ValidationContext;
+     
+            if(!this.pattern.test(value)) {
+                var msgStr = element.data('p-email-msg'),
+                msg = msgStr ? {summary:msgStr, detail: msgStr} : vc.getMessage(this.MESSAGE_ID);
+         
+                throw msg;
+            }
+        }
+    };
+    
+</script>
+ 
+    </h:head>
+    <h:body>
+        <h:form id="formPermissoes"> 
+        <p:messages autoUpdate="true"/>     
+           
+            <p:panel id="panel" header="Cadastro de Associado Contribuinte" styleClass="ocupada"> 
+               <div class="cor_painel">
+               <div class="cadastro">
+           <h:panelGrid columns="6" cellpadding="5">  
+            <h:outputLabel value="Nome:" />
+            <h:inputText id="nome_parceiro" value="#{parceiroJSFManagedBean.nome_parceiro}" size="34" />
+            <h:outputLabel value="Fone:" />
+            <p:inputMask id="fone" value="#{parceiroJSFManagedBean.fone_parceiro}" mask="(99) 9999-9999" size="12" />
+            <h:outputLabel for="email2" value="Email :" />
+            <p:inputText id="email2" value="#{parceiroJSFManagedBean.email_parceiro}" size="28" />
+            <p:watermark for="email2" value="digiteumemail@valido " />
+            <p:message for="email2" display="tooltip" />
+           </h:panelGrid>
+           <h:panelGrid columns="2" cellpadding="5">  
+           <h:outputLabel for="cpf" value="CPF:" />
+           <p:inputMask id="cpf" value="#{parceiroJSFManagedBean.cpf}" mask="999.999.999-99" size="11" />
+            <h:outputLabel for="data_nasc" value="Data Nascimento:" />
+            <p:calendar id="data_nasc" timeZone="America/Sao_Paulo" pattern="dd/MM/yyyy" mask="true" 
+                        locale="pt_BR" value="#{parceiroJSFManagedBean.email_parceiro}" size="10" ></p:calendar>
+            </h:panelGrid>
+               </div>
+                   <br/>
+                    <br/>
+                    <p:growl id="growl" life="2000" showDetail="true" sticky="true" />
+        <div class="botao">  
+            <p:commandButton id="cadastrar" value="CADASTRAR" update="panel" action="#{parceiroJSFManagedBean.cadastrarParceiro()}" 
+                             style=" background-color: #00ff00" ajax="false">
+            <p:resetInput target="panel" />
+            </p:commandButton>
+            <p:commandButton id="buscar" value="BUSCAR" update="panel" action="#{parceiroJSFManagedBean.buscarParceiro()}" 
+                             style=" background-color: #00ff00" ajax="false">
+            <p:resetInput target="panel" />
+            </p:commandButton>
+            <p:commandButton id="excluir" value="EXCLUIR" update="panel" action="#{parceiroJSFManagedBean.excluirParceiro()}" 
+                             style=" background-color: #00ff00" ajax="false">
+            <p:resetInput target="panel" />
+            </p:commandButton>
+        </div>
+               </div>
+        </p:panel>
+    </h:form>
+    </h:body>
+</html>
+

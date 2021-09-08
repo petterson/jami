@@ -1,0 +1,105 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package entidades;
+
+import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+/**
+ *
+ * @author petterson
+ */
+@Entity 
+public class EscolaEntity implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+    
+    @Id 
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    private String nome_escola;
+    @OneToOne(cascade=CascadeType.REMOVE)
+    private EnderecoEntity rua_escola;
+    private int numero_escola;
+    @OneToMany
+    private List<AlunoEntity> list_aluno;
+    
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNome_escola() {
+        return nome_escola;
+    }
+
+    public void setNome_escola(String nome_escola) {
+        this.nome_escola = nome_escola;
+    }
+
+    public EnderecoEntity getRua_escola() {
+        return rua_escola;
+    }
+
+    public void setRua_escola(EnderecoEntity rua_escola) {
+        this.rua_escola = rua_escola;
+    }
+
+    public int getNumero_escola() {
+        return numero_escola;
+    }
+
+    public void setNumero_escola(int numero_escola) {
+        this.numero_escola = numero_escola;
+    }
+
+    public List<AlunoEntity> getList_aluno() {
+        return list_aluno;
+    }
+
+    public void setList_aluno(List<AlunoEntity> list_aluno) {
+        this.list_aluno = list_aluno;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (id != null ? id.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof EscolaEntity)) {
+            return false;
+        }
+        EscolaEntity other = (EscolaEntity) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "entidades.EscolaEntity[ id=" + id + " ]";
+    }
+    
+}

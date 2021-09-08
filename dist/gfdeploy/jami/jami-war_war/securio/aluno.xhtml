@@ -1,0 +1,283 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"       
+      xmlns:p="http://primefaces.org/ui"> 
+     <h:head>
+    <title>Cadastro de Aluno</title>
+    <!--<h:outputStylesheet library="css" name="aluno.css" />-->
+    <style>
+        div.botao {
+      margin-left: 230px;
+    }
+        
+    body {
+         background-color: #3cb371;
+    }
+    
+    div.cadastro {
+
+        margin-left: 30px;
+    }
+    div.serie{
+        
+     padding-right: 40px;
+    } 
+    
+    div.botaocadastros {
+      
+         margin-left: 140px;
+     }
+    .ocupada .ui-panel-titlebar {
+    background: #3cb371;
+    color: #000000;
+    text-align: center;
+    font-size: 20px;
+}
+
+.ui-panel{
+    
+    
+}
+
+    .topnav-home {
+        overflow: hidden;
+        padding-top: 10px;
+    }
+    
+   .topnav-home a {
+        float: left;
+        display: block;
+        color:#00ff00;
+        font-style: initial;
+        font-weight: bold;
+        padding: 20px 10px;
+        text-decoration: none;
+        margin-left: 15px;
+        margin-top: 20px;
+     }
+     
+     .topnav-home a:hover {
+         color: #0000ff;
+                 
+     }
+     .voltar{
+         text-align: center;
+         margin-left: 550px;
+     }
+
+     
+    </style>
+    </h:head>
+    <h:body>
+        <h:form id="formPermissoes"> 
+            <p:messages autoUpdate="true"/>
+           
+            <p:panel id="panel" header="Cadastro de Aluno" styleClass="ocupada"> 
+               <div class="cor_painel">
+               <div class="cadastro">
+               <div class="dadosaluno">
+           <h:panelGrid columns="8" cellpadding="5">  
+            <h:outputLabel value="Nome:" />
+            <h:inputText id="nome_aluno" value="#{alunoJSFManagedBean.nome}" size="35" required="true" />
+            <h:outputLabel value="CPF:" />
+            <p:inputMask id="cpf_aluno" value="#{alunoJSFManagedBean.cpf_aluno}" mask="999.999.999-99" size="11"/>
+            <h:outputLabel value="RG:" />
+            <p:inputMask id="rg_aluno" value="#{alunoJSFManagedBean.rg}" mask="99.999.999-9" requiredMessage="RG INVÁLIDO!" size="10" />
+            <h:outputLabel value="Data da Expedicção:" />
+            <p:calendar id="dataexpedicao" timeZone="America/Sao_Paulo" pattern="dd/MM/yyyy" locale="pt_BR" mask="true" 
+                        value="#{alunoJSFManagedBean.dataexpedicao}" maxdate="#{alunoJSFManagedBean.dataAtual()}" size="10" ></p:calendar>
+           </h:panelGrid>
+           <h:panelGrid columns="6" cellpadding="5"> 
+            <h:outputLabel value="Orgão Expedidor:" />
+            <h:selectOneMenu id="orgao" value="#{alunoJSFManagedBean.orgaoexpedidor}">
+            <f:selectItem itemLabel="-- Selecione --" />
+            <f:selectItems id="orgaos" value="#{alunoJSFManagedBean.list_orgaos_espedidor}" />
+            </h:selectOneMenu>
+            <h:outputLabel value="Data Nascimento:" />
+            <p:calendar id="datanascimento" timeZone="America/Sao_Paulo" pattern="dd/MM/yyyy" locale="pt_BR" mask="true" 
+                        value="#{alunoJSFManagedBean.datanascimento}" maxdate="#{alunoJSFManagedBean.dataAtual()}" size="10" ></p:calendar>
+            <h:outputLabel value="Certidao de Nascimento:" />
+            <p:spinner id="certidao" value="#{alunoJSFManagedBean.certidaonascimento}" min="1" size="14" stepFactor="1" />
+           </h:panelGrid>
+           <h:panelGrid columns="8" cellpadding="5"> 
+            <h:outputLabel value="Numero Livro:" />
+            <p:spinner id="spinner_numero_livro" value="#{alunoJSFManagedBean.livro}" min="1" size="10" stepFactor="1" /> 
+            <h:outputLabel value="Numero Folha:" />
+            <p:spinner id="spinner_numero_folha" value="#{alunoJSFManagedBean.folha}" min="1" size="10" stepFactor="1" />
+            <h:outputLabel value="Cartório:" />
+            <h:selectOneMenu id="cartorios" value="#{alunoJSFManagedBean.cartorio}">
+            <f:selectItem itemLabel="-- Selecione --" />
+            <f:selectItems id="cartorio" value="#{alunoJSFManagedBean.list_cartorios}" />
+            </h:selectOneMenu>
+            <h:outputLabel for="sexo" value="Sexo: " />
+            <h:selectOneMenu id="sexo" value="#{alunoJSFManagedBean.sexo}">
+            <f:selectItem itemLabel="-- Selecione --" />
+            <f:selectItem itemValue="Masculino" itemLabel="Masculino" />
+            <f:selectItem itemValue="Feminino" itemLabel="Feminino"/>
+            <f:selectItems id="sexos" value="#{alunoJSFManagedBean.list_sexo}" />
+            </h:selectOneMenu>
+           </h:panelGrid>  
+               </div>
+               <div class="dadosendereco">
+            <h:panelGrid columns="6" cellpadding="5">
+            <h:outputLabel value="Logradouro:" />
+            <h:selectOneMenu id="ruas" value="#{alunoJSFManagedBean.rua}">
+            <f:selectItem itemLabel="-- Selecione --" />
+            <f:selectItems id="rua" value="#{alunoJSFManagedBean.list_ruas}" />
+            </h:selectOneMenu>
+             <h:outputLabel value="Num da Casa:" />
+             <p:spinner id="spinner_numero_casa" value="#{alunoJSFManagedBean.numero_casa}" min="1" size="11" stepFactor="1" />
+             <h:outputLabel value="Referencia:" />
+            <h:inputText id="pontoreferencia" value="#{alunoJSFManagedBean.referencia}" size="28" />
+             </h:panelGrid>
+             <h:panelGrid columns="8" cellpadding="5">
+            <h:outputLabel value="Telefone:" />
+            <p:inputMask id="fone_aluno" value="#{alunoJSFManagedBean.fone}" mask="(99) 9999-9999" size="12" />
+            <h:outputLabel value="Município Nasci:" />
+            <h:selectOneMenu id="municipionascimentos" value="#{alunoJSFManagedBean.municipio_nascimento}">
+            <f:selectItem itemLabel="-- Selecione --" />
+            <f:selectItems id="municipionascimento" value = "#{alunoJSFManagedBean.list_municipio_nascimentos}" />    
+            </h:selectOneMenu> 
+            <h:outputLabel value="Cor/Raça:" />
+            <h:selectOneMenu id="cor_raca" value="#{alunoJSFManagedBean.raca}">
+            <f:selectItem itemLabel="-- Selecione --" />
+            <f:selectItem itemValue="Branco" itemLabel="Branco" />
+            <f:selectItem itemValue="Amarelo" itemLabel="Amarelo"/>
+            <f:selectItem itemValue="Pardo" itemLabel="Pardo" />
+            <f:selectItem itemValue="Negro" itemLabel="Negro"/>
+            <f:selectItems id="raca" value="#{alunoJSFManagedBean.list_racas}" />
+            </h:selectOneMenu>
+            <h:outputLabel value="Situação:" />
+            <h:selectOneMenu id="situacao_alunos" value="#{alunoJSFManagedBean.situacao}">
+            <f:selectItem itemLabel="-- Selecione --" />
+            <f:selectItem itemValue="Ativo" itemLabel="Ativo"/>
+            <f:selectItem itemValue="Espera" itemLabel="Espera" />
+            <f:selectItem itemValue="Desistente" itemLabel="Desistente" />
+            <f:selectItems id="situacao_aluno" value="#{alunoJSFManagedBean.list_situacoes}" />
+             </h:selectOneMenu>
+             </h:panelGrid>
+               </div>
+            <div class="dadosfamilia">
+            <h:panelGrid columns="8" cellpadding="5">
+            <h:outputLabel value="Data Matricula:" />
+            <p:calendar id="datamatricula" timeZone="America/Sao_Paulo" pattern="dd/MM/yyyy" locale="pt_BR" mask="true" 
+                        value="#{alunoJSFManagedBean.data_matricula}" maxdate="#{alunoJSFManagedBean.dataAtual()}" size="9" ></p:calendar>
+            <h:outputLabel value="Tem Alergia:" />
+            <p:selectCheckboxMenu id = "alergias" value="#{alunoJSFManagedBean.list_alergias_selecionadas}" label="Alergias"     
+            filter = "true" filterMatchMode = "startsWith" panelStyle = "width: 250px" >
+            <f:selectItems id="alergia" value="#{alunoJSFManagedBean.list_alergias}" />    
+            </p:selectCheckboxMenu > 
+            <h:outputLabel value="Tem Problema de Saúde:" />         
+            <p:selectCheckboxMenu id = "saudes" value="#{alunoJSFManagedBean.list_problemas_saude_selecionados}" label=" Problema Saúde"     
+            filter = "true" filterMatchMode = "startsWith" panelStyle = "width: 250px" >
+            <f:selectItems id="saude" value="#{alunoJSFManagedBean.list_problemas}" />    
+            </p:selectCheckboxMenu >  
+            <h:outputLabel value="Pai:" />
+            <h:selectOneMenu id="pais" value="#{alunoJSFManagedBean.pai}">
+            <f:selectItem itemLabel="-- Selecione --" />
+            <f:selectItems id="pai" value="#{alunoJSFManagedBean.list_pais}" />
+             </h:selectOneMenu>
+            </h:panelGrid>
+            <h:panelGrid columns="8" cellpadding="5">
+            <h:outputLabel value="Mãe:" />
+            <h:selectOneMenu id="maes" value="#{alunoJSFManagedBean.mae}">
+            <f:selectItem itemLabel="-- Selecione --" />
+            <f:selectItems id="mae" value="#{alunoJSFManagedBean.list_maes}" />
+             </h:selectOneMenu>
+             <h:outputLabel value="Tem Irmãos:" />
+            <p:selectCheckboxMenu id="irmaos" value="#{alunoJSFManagedBean.list_irmaos_selecionados}" label="Irmãos"     
+            filter = "true" filterMatchMode = "startsWith" panelStyle = "width: 250px" >
+            <f:selectItems id="irmao" value="#{alunoJSFManagedBean.list_irmaos}" />    
+            </p:selectCheckboxMenu >
+            <h:outputLabel value="Bolsa Família:" />
+            <h:selectOneMenu id="bolsa_familias" value="#{alunoJSFManagedBean.bolsafamilia}">
+            <f:selectItem itemLabel="-- Selecione --" />
+            <f:selectItem itemValue="Sim" itemLabel="Sim" />
+            <f:selectItem itemValue="Não" itemLabel="Não"/>
+            <f:selectItems id="bolsa_familia" value="#{alunoJSFManagedBean.list_bolsa_familias}" />
+             </h:selectOneMenu>
+            <h:outputLabel value="Turno:" />
+            <h:selectOneMenu id="turnos" value="#{alunoJSFManagedBean.turno}">
+            <f:selectItem itemLabel="-- Selecione --" />
+            <f:selectItem itemValue="Manhã" itemLabel="Manhã" />
+            <f:selectItem itemValue="Tarde" itemLabel="Tarde"/>
+            <f:selectItems id="turno" value="#{alunoJSFManagedBean.list_turnos}" />
+            </h:selectOneMenu>
+            </h:panelGrid>
+               </div>
+            <div class="dadosescola">
+            <div class="turno">
+            <h:panelGrid columns="6" cellpadding="5">
+            <h:outputLabel value="Escola:" />
+            <h:selectOneMenu id="escolas" value="#{alunoJSFManagedBean.escola}">
+            <f:selectItem itemLabel="-- Selecione --" />
+            <f:selectItems id="escola" value="#{alunoJSFManagedBean.list_escolas}" />
+            </h:selectOneMenu>
+             <h:outputLabel value="Matrícula:" />
+             <p:spinner id="matricula_escola" value="#{alunoJSFManagedBean.numeromatricula}" min="1" size="10" stepFactor="1" />
+            <h:outputLabel value="Série:" />
+            <h:selectOneMenu id="series" value="#{alunoJSFManagedBean.serie}">
+            <f:selectItem itemLabel="-- Selecione --" />
+            <f:selectItem itemValue="Primeira" itemLabel="Primeira" />
+            <f:selectItem itemValue="Segunda" itemLabel="Segunda"/>
+            <f:selectItem itemValue="Terciera" itemLabel="Terceira" />
+            <f:selectItem itemValue="Quarta" itemLabel="Quarta"/>
+            <f:selectItem itemValue="Quinta" itemLabel="Quinta" />
+            <f:selectItem itemValue="Sexta" itemLabel="Sexta"/>
+            <f:selectItem itemValue="Setima" itemLabel="Setima" />
+            <f:selectItem itemValue="Oitava" itemLabel="Oitava"/>
+            <f:selectItem itemValue="1 Ano" itemLabel="1 Ano" />
+            <f:selectItem itemValue="2 Ano" itemLabel="2 Ano"/>
+            <f:selectItem itemValue="3 Ano" itemLabel="3 Ano"/>
+            <f:selectItems id="serie" value="#{alunoJSFManagedBean.list_series}" />
+            </h:selectOneMenu>
+            </h:panelGrid>
+            </div>
+            </div>
+            </div>
+             </div>
+                 <div class="topnav-home">
+                    <!--<h:button value="Home" outcome="endereco.xhtml" style="background-color: #00ff00"/>-->
+                   <a href="http://localhost:8080/jami-war/securio/escola.xhtml">CAD. ESCOLA</a>
+                   <a href="http://localhost:8080/jami-war/securio/endereco.xhtml">CAD. MUNICÍPIO</a>
+                   <a href="http://localhost:8080/jami-war/securio/cartorio.xhtml">CAD. CARTÓRIO</a>
+                   <a href="http://localhost:8080/jami-war/securio/problema_saude.xhtml">CAD. SAÚDE</a>
+                   <a href="http://localhost:8080/jami-war/securio/alergia_alimento.xhtml">CAD. ALERGIA</a>
+                   <a href="http://localhost:8080/jami-war/securio/pai.xhtml">CAD. PAI</a>
+                   <a href="http://localhost:8080/jami-war/securio/mae.xhtml">CAD. MÃE</a>
+                   <a href="http://localhost:8080/jami-war/securio/irmao.xhtml">CAD. IRMÃOS</a>
+                   <div class="voltar">
+                   <a href="http://localhost:8080/jami-war/securio/operacional.xhtml">VOLTAR</a>
+                   </div>
+                   </div>
+                 <br/> 
+                 <br/> 
+               <div class="botaocadastros">  
+             <p:growl id="growl" life="2000" showDetail="true" sticky="true" />
+        <div class="botao">  
+            <p:commandButton id="cadastrar" value="CADASTRAR" update="panel" action="#{alunoJSFManagedBean.cadastrarAluno()}" 
+                             style=" background-color: #00ff00" ajax="false">
+            <p:resetInput target="panel" />
+            </p:commandButton>
+            <p:commandButton id="buscar" value="BUSCAR" update="panel" action="#{alunoJSFManagedBean.buscarAluno()}" 
+                             style=" background-color: #00ff00" ajax="false">
+            <p:resetInput target="panel" />
+            </p:commandButton>
+            <p:commandButton id="atualizar" value="ATUALIZAR" update="panel" action="#{alunoJSFManagedBean.atualizarAluno()}" 
+                             style=" background-color: #00ff00" ajax="false"> 
+            <p:resetInput target="panel" />
+            </p:commandButton>
+            <p:commandButton id="excluir" value="EXCLUIR" update="panel" action="#{alunoJSFManagedBean.excluirAluno()}" 
+                             style=" background-color: #00ff00" ajax="false"> 
+            <p:resetInput target="panel" />
+            </p:commandButton>
+        </div>
+             </div> 
+         </p:panel> 
+        </h:form>
+    </h:body>
+</html>
+
+

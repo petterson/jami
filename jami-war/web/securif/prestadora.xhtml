@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Cadastro de Prestadora Servico</title>
+         <style>
+            div.botao {
+      margin-left: 390px;
+    }
+        
+    body {
+         background-color: #3cb371;
+    }
+    
+    div.cadastro {
+        margin-top: 10px;
+        margin: 0px 0px 0px 100px; 
+         
+        
+    }
+    
+    .ocupada .ui-panel-titlebar {
+    background: #3cb371;
+    color: #000000;
+    text-align: center;
+    font-size: 20px;
+}
+        .topnav-home {
+        overflow: hidden;
+        padding-top: 10px;
+    }
+    
+   .topnav-home a {
+        float: left;
+        display: block;
+        color: #0000ff;
+        font-style: initial;
+        font-weight: bold;
+        padding: 14px 8px;
+        text-decoration: none;
+        margin-top: 20px;
+     }
+     
+     .topnav-home a:hover {
+         color: #ff007f;
+                 
+     }
+      div.botaocadastros {
+         margin-left: 550px;
+    }
+
+   
+
+        </style>
+    </h:head>
+    <h:body>
+        <h:form id="formPermissoes"> 
+        <p:messages autoUpdate="true"/>
+ 
+        <p:panel id="panel" header="Cadastro de Intituição Prestadora Serviço" styleClass="ocupada"> 
+               <div class="cor_painel">
+               <div class="cadastro">
+           <h:panelGrid columns="6" cellpadding="5">  
+               <h:outputLabel for="cnpj" value="CNPJ:" />
+               <p:inputMask id="cnpj" value="#{prestadoraJSFManagedBean.cnpj_prestadora}" mask="99.999.999/9999-99" size="14" />
+            <h:outputLabel for="nome" value="Nome:" />
+            <h:inputText id="nome" value="#{prestadoraJSFManagedBean.nome_prestadora}" size="45" />
+            <h:outputLabel for="fone" value="Fone:" />
+            <p:inputMask id="fone" value="#{prestadoraJSFManagedBean.fone_prestadora}" mask="(99) 9999-9999" size="12" />
+            </h:panelGrid> 
+            <h:panelGrid columns="8" cellpadding="5">
+            <h:outputLabel for="email_instituicao" value="Email :" />
+            <p:inputText id="email_instituicao" value="#{prestadoraJSFManagedBean.email_prestadora}" size="30" />
+            <p:watermark for="email_instituicao" value="digiteumemail@valido " />
+            <p:message for="email_instituicao" display="tooltip" />
+            <h:outputLabel for="tipo_nomes" value="Tipo Instituiçao:" />
+            <h:selectOneMenu id="tipo_nomes" value="#{prestadoraJSFManagedBean.nome__tipo_instituicao}">
+            <f:selectItem itemLabel="--Selecione--" />
+            <f:selectItems id="tipo_nome" value="#{prestadoraJSFManagedBean.list_nome_tipos}" />
+            </h:selectOneMenu>
+            <h:outputLabel for="data_doacao" value="Data:" />
+            <p:calendar id="data_doacao" timeZone="America/Sao_Paulo" pattern="dd/MM/yyyy" locale="pt_BR" mask="true" 
+                        value="#{prestadoraJSFManagedBean.data_cadastro}" size="10" ></p:calendar>
+            </h:panelGrid>
+            </div>
+            <br/>
+            <div class="botaocadastros">
+                <div class="topnav-home">
+                   <a href="http://localhost:8080/jami-war/securif/tipo_instituicao.xhtml">TIPO INSTITUIÇAO</a>
+                </div>
+            </div>             
+            <br/>
+            <br/>
+            <p:growl id="growl" life="2000" showDetail="true" sticky="true" />
+        <div class="botao">  
+            <p:commandButton id="cadastrar" value="CADASTRAR" update="panel" action="#{prestadoraJSFManagedBean.cadastrarPrestadora()}" 
+                             style=" background-color: #00ff00">
+            <p:resetInput target="panel" />
+            </p:commandButton>
+            <p:commandButton id="buscar" value="BUSCAR" update="panel" action="#{prestadoraJSFManagedBean.buscarPrestadora()}" 
+                             style=" background-color: #00ff00">
+            <p:resetInput target="panel" />
+            </p:commandButton>
+            <p:commandButton id="atualizar" value="ATUALIZAR" update="panel" action="#{prestadoraJSFManagedBean.atualizarPrestadora()}" 
+                             style=" background-color: #00ff00">
+            <p:resetInput target="panel" />
+            </p:commandButton>
+            <p:commandButton id="excluir" value="EXCLUIR" update="panel" action="#{prestadoraJSFManagedBean.excluirPrestadora()}" 
+                             style=" background-color: #00ff00">  
+            <p:resetInput target="panel" />
+            </p:commandButton>
+        </div>
+            </div>
+         </p:panel> 
+        </h:form>
+    </h:body>
+</html>
+
+
+

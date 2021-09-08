@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Salario</title>
+    <style>
+            div.botao {
+      margin-left: 470px;
+    }
+        
+    body {
+         background-color: #3cb371;
+    }
+    
+    div.cadastro {
+        margin-top: 10px;
+        margin: 0px 0px 0px 250px;
+         
+        
+    }
+    
+    .ocupada .ui-panel-titlebar {
+    background: #3cb371;
+    color: #000000;
+    text-align: center;
+    font-size: 20px;
+}
+         
+
+        </style>
+    </h:head>
+    <h:body>
+        <h:form id="formPermissoes"> 
+        <p:messages autoUpdate="true"/>
+ 
+        <p:panel id="panel" header="Cadastro de Salário" styleClass="ocupada"> 
+               <div class="cor_painel">
+               <div class="cadastro">
+           <h:panelGrid columns="4" cellpadding="5">  
+           <h:outputLabel for="id_salario_lb" value="Valor do Salário:" />
+           <p:spinner id="id_spinner_valor_salario" value="#{salarioJSFManagedBean.valor_salario}" prefix="$  " suffix=",00" min="1050" size="10" stepFactor="10" /> 
+           <h:outputLabel for="salarios" value="Selecione Salário Para Remover: " />
+           <h:selectOneMenu id="salarios" value="#{salarioJSFManagedBean.troca_calor}" 
+                            valueChangeListener="#{salarioJSFManagedBean.listaSalarioSpynner(event)}">
+            <f:selectItem itemLabel="-- Selecione --" />
+            <p:ajax event="change" process="@this" update="formPermissoes: id_spinner_valor_salario" 
+                    listener="#{salarioJSFManagedBean.listaSalarioSpynner(event)}"/>
+            <f:selectItems id="salario" value="#{salarioJSFManagedBean.salarios_double}" />
+            </h:selectOneMenu>           
+           </h:panelGrid> 
+            </div>
+            <br/>
+            <br/>
+            <p:growl id="growl" life="2000" showDetail="true" sticky="true" />
+        <div class="botao">  
+            <p:commandButton id="cadastrar" value="CADASTRAR" update="panel" action="#{salarioJSFManagedBean.cadastrarSalario()}" 
+                             style=" background-color: #00ff00" ajax="false">
+            <p:resetInput target="panel" />
+            </p:commandButton>
+            <p:commandButton id="excluir" value="EXCLUIR" update="panel" action="#{salarioJSFManagedBean.excluirSalario()}" 
+                             style=" background-color: #00ff00" ajax="false">   
+            <p:resetInput target="panel" />
+            </p:commandButton>
+        </div>
+            </div>
+         </p:panel> 
+        </h:form>
+    </h:body>
+</html>
+
+
+

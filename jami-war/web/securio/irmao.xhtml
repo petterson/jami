@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Irmao</title>
+        <style>
+            div.botao {
+      margin-left: 490px;
+    }
+    
+     div.botaocadastros {
+         margin-left: 530px;
+    }
+        
+    body {
+         background-color: #3cb371;
+    }
+    
+    div.cadastro_pai {
+        margin-top: 10px;
+        margin-left: 100px;
+         
+        
+    }
+    
+    .ocupada .ui-panel-titlebar {
+    background: #3cb371;
+    color: #000000;
+    text-align: center;
+    font-size: 20px;
+}
+ .topnav-home {
+        overflow: hidden;
+        padding-top: 10px;
+    }
+    
+   .topnav-home a {
+        float: left;
+        display: block;
+        color: #0000ff;
+        font-style: initial;
+        font-weight: bold;
+        padding: 14px 8px;
+        text-decoration: none;
+        margin-top: 20px;
+     }
+     
+     .topnav-home a:hover {
+         color: #ff007f;
+                 
+     }
+      div.botaocadastros {
+          margin-left: 500px;
+      }
+     </style>
+    </h:head>
+    <h:body>
+        <h:form id="formPermissoes"> 
+            <p:messages autoUpdate="true"/>
+                
+ 
+            <p:panel id="panel" header="Cadastro de Irmão" styleClass="ocupada"> 
+               <div class="cor_painel">
+           <div class="cadastro_pai">
+            <h:panelGrid columns="6" cellpadding="5">
+            <h:outputLabel for="cpf" value="CPF:" />
+            <p:inputMask id="cpf" value="#{irmaoJSFManagedBean.cpf_irmao}" mask="999.999.999-99" size="11" />
+            <h:outputLabel for="nome_irmao" value="Nome :" />
+            <h:inputText id="nome_irmao" value="#{irmaoJSFManagedBean.nome_irmao}" size="40" />  
+            <h:outputLabel for="data" value="Data Nascimento:" />
+            <p:calendar id="data" timeZone="America/Sao_Paulo" pattern="dd/MM/yyyy" locale="pt_BR" mask="true"
+                        value="#{irmaoJSFManagedBean.data_nascimento_irmao}" maxdate="#{paiJSFManagedBean.dataHoje()}" 
+                        size="10" ></p:calendar>
+            </h:panelGrid>
+            <h:panelGrid columns="2" cellpadding="5">
+            <h:outputLabel value="Fone:" />
+            <p:inputMask id="fone" value="#{irmaoJSFManagedBean.fone_irmao}" mask="(99) 9999-9999" size="12" />  
+            </h:panelGrid>
+            </div>
+                 <br/>
+            <div class="botaocadastros">
+                <div class="topnav-home">
+                   <a href="http://localhost:8080/jami-war/securi/endereco.xhtml">ENDEREÇO</a>
+                   </div>
+            </div>
+                   <br/>
+                    <br/>
+        <div class="botao">  
+            <p:commandButton id="cadastrar" value="CADASTRAR" update="panel" action="#{irmaoJSFManagedBean.cadastrarIrmao()}" style=" background-color: #00ff00" >
+            <p:resetInput target="panel" />   
+            </p:commandButton>
+            <p:commandButton id="buscar" value="BUSCAR" update="panel" action="#{irmaoJSFManagedBean.buscarIrmao()}" style=" background-color: #00ff00" >  
+            <p:resetInput target="panel" />   
+            </p:commandButton>
+            <p:commandButton id="atualizar" value="ATUALIZAR" update="panel" action="#{irmaoJSFManagedBean.atualizarIrmao()}" style=" background-color: #00ff00" >  
+            <p:resetInput target="panel" />   
+            </p:commandButton>
+        </div>  
+            </div>
+         </p:panel> 
+        </h:form>
+    </h:body>
+</html>
+

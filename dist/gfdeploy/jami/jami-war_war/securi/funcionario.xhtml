@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Funcionario</title>
+   <style>
+            div.botao {
+      margin-left: 370px;
+    }
+        
+    body {
+         background-color: #3cb371;
+    }
+    
+    div.cadastro {
+        margin-top: 10px;
+        margin: 0px 0px 0px 30px; 
+    }
+    
+    
+    .ocupada .ui-panel-titlebar {
+    background: #3cb371;
+    color: #000000;
+    text-align: center;
+    font-size: 20px;
+}
+
+       .topnav-home {
+        overflow: hidden;
+        padding-top: 10px;
+    }
+    
+   .topnav-home a {
+        float: left;
+        display: block;
+        color: #0000ff;
+        font-style: initial;
+        font-weight: bold;
+        padding: 14px 8px;
+        text-decoration: none;
+        margin-top: 20px;
+     }
+     
+     .topnav-home a:hover {
+         color: #ff007f;
+                 
+     }
+      div.botaocadastros {
+         margin-left: 400px;
+    }
+
+        </style>
+    </h:head>
+    <h:body> 
+        <h:form id="formPermissoes"> 
+         <p:messages autoUpdate="true"/>
+           
+         <p:panel id="panel" header="Cadastro de Funcionario" styleClass="ocupada"> 
+               <div class="cor_painel">
+               <div class="cadastro">
+           <h:panelGrid columns="8" cellpadding="5"> 
+            <h:outputLabel value="Nome:" />
+            <h:inputText id="nome_funcionario" value="#{funcionarioJSFManagedBean.nome_funcionario}" size="43" />
+            <h:outputLabel value="CPF:" />
+            <p:inputMask id="cpf" value="#{funcionarioJSFManagedBean.cpf_funncionario}" mask="999.999.999-99" size="11" />
+            <h:outputLabel value="RG:" />
+            <p:inputMask id="rg" value="#{funcionarioJSFManagedBean.rg_funcionario}" mask="99.999.999-9" requiredMessage="RG INVÁLIDO!" size="10" />
+            <h:outputLabel for="data_nasc" value="Data Nasc:" />
+            <p:calendar id="data_nasc" timeZone="America/Sao_Paulo" pattern="dd/MM/yyyy" mask="true" 
+                        locale="pt_BR" value="#{funcionarioJSFManagedBean.data_nasc}" size="10" ></p:calendar>
+           </h:panelGrid>           
+            <h:panelGrid columns="10" cellpadding="5">  
+            <h:outputLabel value="Fone:" />
+            <p:inputMask id="fone_funcionario" value="#{funcionarioJSFManagedBean.fone_funcionario}" mask="(99) 9999-9999" size="12" />
+            <h:outputLabel for="rua_fubxionarios" value="Rua: " />
+            <h:selectOneMenu id="rua_funcionarios" value="#{funcionarioJSFManagedBean.rua_funcionario}">
+            <f:selectItem itemLabel="-- Selecione --" />
+            <f:selectItems id="rua_funcionario" value="#{funcionarioJSFManagedBean.nome_ruas}" />
+            </h:selectOneMenu> 
+            <h:outputLabel value=" NRO:" />
+            <p:spinner id="id_numero_funcionario" value="#{funcionarioJSFManagedBean.numero_funcionario}" min="1" size="7" stepFactor="1" />
+            <h:outputLabel value="CLT:" />
+            <p:inputMask id="clt" value="#{funcionarioJSFManagedBean.clt_funcionario}" mask="9999999" size="11" />
+            <h:outputLabel value="PIS:" />
+            <p:inputMask id="pis" value="#{funcionarioJSFManagedBean.pis_funcionario}" mask="999.99999.99-9" requiredMessage="PIS INVÁLIDO!" size="13" />
+            </h:panelGrid> 
+            <h:panelGrid columns="6" cellpadding="5"> 
+            <h:outputLabel for="cargo" value="Cargo: " />
+            <h:selectOneMenu id="cargo" value="#{funcionarioJSFManagedBean.cargo_funcionario}">
+            <f:selectItem itemLabel="--Selecione--" />
+            <f:selectItems id="cargo_funcionario" value="#{funcionarioJSFManagedBean.nome_cargos}" />
+            </h:selectOneMenu>
+            <h:outputLabel value="Departamento:" />
+            <h:selectOneMenu id="depart" value="#{funcionarioJSFManagedBean.departamento_funcionario}">
+            <f:selectItem itemLabel="-- Selecione --" />
+            <f:selectItems id="dparts" value = "#{funcionarioJSFManagedBean.nome_departamentos}" />    
+            </h:selectOneMenu>
+            <h:outputLabel for="data_contratacao" value="Data Contratação:" />
+            <p:calendar id="data_contratacao" timeZone="America/Sao_Paulo" pattern="dd/MM/yyyy" locale="pt_BR" value="#{funcionarioJSFManagedBean.data_contratacao}" maxdate="#{funcionarioJSFManagedBean.dataAtual()}" size="10" ></p:calendar>
+            </h:panelGrid>           
+             </div>    
+                 <br/>
+            <div class="botaocadastros">
+                <div class="topnav-home">
+                   <a href="http://localhost:8080/jami-war/securi/cargo.xhtml">CADASTRO CARGO</a>
+                   <a href="http://localhost:8080/jami-war/securi/departamento.xhtml">CADASTRO DEPARTAMENTO</a>
+                   </div>
+            </div>
+                    <br/>
+                    <br/>
+        <div class="botao">  
+            <p:commandButton id="cadastrar" value="CADASTRAR" update="panel" action="#{funcionarioJSFManagedBean.cadastrarFuncionario()}" 
+                             style=" background-color: #00ff00" ajax="false">
+            <p:resetInput target="panel" />   
+            </p:commandButton>
+            <p:commandButton id="buscar" value="BUSCAR" update="panel" action="#{funcionarioJSFManagedBean.buscarFuncionario()}" 
+                                 style=" background-color: #00ff00" ajax="false">
+            <p:resetInput target="panel" />   
+            </p:commandButton>
+            <p:commandButton id="atualizar" value="ATUALIZAR" update="panel" action="#{funcionarioJSFManagedBean.atualizaFuncionario()}" 
+                                 style=" background-color: #00ff00" ajax="false">
+            <p:resetInput target="panel" />   
+            </p:commandButton>
+            <p:commandButton id="excluir" value="EXCLUIR" update="panel" action="#{funcionarioJSFManagedBean.excluirFuncionario()}" 
+                             style=" background-color: #00ff00">    
+            <p:resetInput target="panel" />   
+            </p:commandButton>
+        </div>
+              
+            </div>
+         </p:panel> 
+        </h:form>
+    </h:body>
+</html>
+
+

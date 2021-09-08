@@ -1,0 +1,139 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Mae</title>
+     <style>
+            div.botao {
+      margin-left: 390px;
+    }
+        
+    body {
+         background-color: #3cb371;
+    }
+    
+    div.cadastro_mae {
+        margin-top: 10px;
+        margin: 0px 0px 0px 30px;
+         
+        
+    }
+    
+    .ocupada .ui-panel-titlebar {
+    background: #3cb371;
+    color: #000000;
+    text-align: center;
+    font-size: 20px;
+}
+ .topnav-home {
+        overflow: hidden;
+        padding-top: 10px;
+    }
+    
+   .topnav-home a {
+        float: left;
+        display: block;
+        color: #0000ff;
+        font-style: initial;
+        font-weight: bold;
+        padding: 14px 8px;
+        text-decoration: none;
+        margin-top: 20px;
+     }
+     
+     .topnav-home a:hover {
+         color: #ff007f;
+                 
+     }
+      div.botaocadastros {
+          margin-left: 500px;
+      }
+        </style>
+    </h:head>
+    <h:body>
+        <h:form id="formPermissoes"> 
+            <p:messages autoUpdate="true"/>
+              
+ 
+            <p:panel id="panel" header="Cadastro de Mãe" styleClass="ocupada"> 
+               <div class="cor_painel">
+           <div class="cadastro_mae">
+            <h:panelGrid columns="8" cellpadding="5">
+            <h:outputLabel for="nome_mae" value="Nome Mãe:" />
+            <h:inputText id="nome_mae" value="#{maeJSFManagedBean.nome_mae}" size="38" />
+            <h:outputLabel for="cpf_mae" value="CPF:" />
+            <p:inputMask id="cpf_mae" value="#{maeJSFManagedBean.cpf_mae}" mask="999.999.999-99" size="11" />
+            <h:outputLabel for="rg_mae" value="RG:" />
+            <p:inputMask id="rg_mae" value="#{maeJSFManagedBean.rg_mae}" mask="99.999.999-9" size="10" />
+            <h:outputLabel for="data_nasc_mae" value="Data Nascimento:" />
+            <p:calendar id="data_nasc_mae" timeZone="America/Sao_Paulo" pattern="dd/MM/yyyy" mask="true" locale="pt_BR" 
+                        value="#{maeJSFManagedBean.data_nascimento_mae}" 
+                        maxdate="#{maeJSFManagedBean.dataAtual()}" size="10" ></p:calendar>
+            </h:panelGrid>
+            <h:panelGrid columns="8" cellpadding="5">
+            <h:outputLabel for="profissao_mae" value="Profissão:" />
+            <h:inputText id="profissao_mae" value="#{maeJSFManagedBean.profissao_mae}" size="20" />
+            <h:outputLabel for="local_trabalho_mae" value="Local Trabalho:" />
+            <h:inputText id="local_trabalho_mae" value="#{maeJSFManagedBean.local_trabalho_mae}" size="20" />
+            <h:outputLabel for="fone_mae" value="Fone:" />
+            <p:inputMask id="fone_mae" value="#{maeJSFManagedBean.fone_mae}" mask="(99) 9999-9999" size="12" />
+            <h:outputLabel for="escolaridade_maes" value="Escolaridade:" />
+            <h:selectOneMenu id="escolaridade_maes" value="#{maeJSFManagedBean.escolaridade_mae}">
+            <f:selectItem itemLabel="-- Selecione --" />
+            <f:selectItem itemValue="Primario" itemLabel="Primário" />
+            <f:selectItem itemValue="Ginasio" itemLabel="Ginásio"/>
+            <f:selectItem itemValue="EnsinoMedio" itemLabel="Ensino Médio" />
+            <f:selectItem itemValue="Tecnico" itemLabel="Tecnico" />
+            <f:selectItem itemValue="Graduação" itemLabel="Graduação"/>
+            <f:selectItem itemValue="Mestrado" itemLabel="Mestrado" />
+            <f:selectItem itemValue="Doutorado" itemLabel="Doutorado" />
+            <f:selectItems id="escolaridade_mae" value="#{maeJSFManagedBean.list_escolaridade}" />
+            </h:selectOneMenu>
+            </h:panelGrid>
+            <h:panelGrid columns="4" cellpadding="5">
+             <h:outputLabel for="rua_maes" value="Logradouro:" />
+             <h:selectOneMenu id="rua_maes" value="#{maeJSFManagedBean.rua_mae}">
+             <f:selectItem  itemLabel="-- Selecione --" />
+            <f:selectItems id="rua_mae" value="#{maeJSFManagedBean.nome_ruas}" />
+            </h:selectOneMenu>
+             <h:outputLabel for="spinner_numero_casa_mae" value="Numero da Casa:" />
+             <p:spinner id="spinner_numero_casa_mae" value="#{maeJSFManagedBean.numero_casa_mae}" min="1" size="7" stepFactor="1" />
+           </h:panelGrid> 
+           </div>
+                 <br/>
+            <div class="botaocadastros">
+                <div class="topnav-home">
+                   <a href="http://localhost:8080/jami-war/securi/endereco.xhtml">ENDEREÇO</a>
+                   </div>
+            </div>
+                   <br/>
+                    <br/>
+        <div class="botao">  
+            <p:commandButton id="cadastrar" value="CADASTRAR" update="panel" action="#{maeJSFManagedBean.cadastrarMae()}" 
+                             style=" background-color: #00ff00" ajax="false">
+            <p:resetInput target="panel" />   
+            </p:commandButton>
+            <p:commandButton id="buscar" value="BUSCAR" update="panel" action="#{maeJSFManagedBean.buscarMae()}" 
+                             style=" background-color: #00ff00" ajax="false">
+            <p:resetInput target="panel" />   
+            </p:commandButton>
+            <p:commandButton id="atualizar" value="ATUALIZAR" update="panel" action="#{maeJSFManagedBean.atualizarMae()}" 
+                             style=" background-color: #00ff00" ajax="false">
+            <p:resetInput target="panel" />   
+            </p:commandButton>
+            <!--<p:commandButton id="excluir" value="EXCLUIR" update="panel" action="" 
+                             style=" background-color: #00ff00" ajax="false">
+            <p:resetInput target="panel" />   
+            </p:commandButton>-->
+        </div>
+            </div>
+         </p:panel> 
+        </h:form>
+    </h:body>
+</html>
+
+
+

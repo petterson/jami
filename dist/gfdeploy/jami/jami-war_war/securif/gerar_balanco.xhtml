@@ -1,0 +1,279 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Gerar Balanço</title>
+        <style>
+            div.botao {
+      margin-left: 500px;
+    }
+        
+    body {
+         background-color: #3cb371;
+    }
+    
+    div.cadastro {
+        margin-top: 10px;
+        margin: 0px 0px 0px 350px;
+    }
+    
+    
+    .ocupada .ui-panel-titlebar {
+    background: #3cb371;
+    color: #000000;
+    text-align: center;
+    font-size: 20px;
+}
+         
+      
+      h1{
+          text-align: center;
+      }
+     
+      .old {
+        background-color: #98fb98 !important;
+        background-image: none !important;
+        color: #000000 !important;
+    }
+    
+    /*.ui-datatable-header{
+        background-color: #3cb371;
+    }*/
+    .pri {
+        background-color: #3cb371 !important;
+        background-image: none !important;
+        color: #ffffff !important;
+    }  
+    
+    .topnav-home {
+        overflow: hidden;
+        padding-top: 10px;
+    }
+    
+   .topnav-home a {
+        float: left;
+        display: block;
+        color: #00ff00;
+        font-style: initial;
+        font-weight: bold;
+        padding: 14px 8px;
+        text-decoration: none;
+        margin-top: 0px;
+     }
+     
+     .topnav-home a:hover {
+         color: #ff007f;
+                 
+     }
+      div.botaocadastros {
+          margin-left: 550px;
+      }
+  
+
+        </style>
+    </h:head>
+    <h:body>
+        <h:form id="formPermissoes"> 
+        <p:messages autoUpdate="true"/>    
+            <p:panel id="panel" header="Gerar Balanço" styleClass="ocupada"> 
+               <div class="cor_painel">
+               <div class="cadastro">
+           <h:panelGrid columns="4" cellpadding="5">  
+           <h:outputLabel value="Data Inicial:" />
+           <p:calendar id="data_inicial" timeZone="America/Sao_Paulo" pattern="dd/MM/yyyy" mask="true" locale="pt_BR" 
+                       value="#{gerarBalanceteJSFManagedBean.data_inicial}" size="10" ></p:calendar>
+           <h:outputLabel value="Data Final:" />
+           <p:calendar id="data_final" timeZone="America/Sao_Paulo" pattern="dd/MM/yyyy" mask="true" locale="pt_BR" 
+                       value="#{gerarBalanceteJSFManagedBean.data_final}" size="10" ></p:calendar>
+            </h:panelGrid>
+                   <br/>
+               </div>
+                   <div class="botaocadastros">
+                <div class="topnav-home">
+                   <a href="http://localhost:8080/jami-war/securif/financeiro.xhtml">VOLTAR</a>
+                </div> 
+            </div>
+                    <br/>
+                   <br/>
+                   <p:dataTable id="tbgovernom" var="govm" value="#{gerarBalanceteJSFManagedBean.governom}" 
+                                rowStyleClass="#{govm.nome eq 'GOVERNO MUNICIPAL' ? 'pri' : 'old'}" >
+                       <f:facet name="header">
+                      TABELA GOVERNO MUNICIPAL
+                      </f:facet>
+                       <p:column id="coluna" headerText="Nome">
+                          <h:outputText value="#{govm.nome}"/>
+                      </p:column>
+                      <p:column headerText="Valores">
+                          <h:outputText value="#{govm.valor_sttring}" />
+                      </p:column>
+                      <p:column headerText="Percentual">
+                          <h:outputText id="saldo" value="#{govm.percentual}" />
+                       </p:column>
+                    </p:dataTable>
+                    <br/>
+                    <br/>
+                   <br/>
+                   <p:dataTable id="tbgovernoe" var="gove" value="#{gerarBalanceteJSFManagedBean.governoe}" 
+                                rowStyleClass="#{gove.nome eq 'GOVERNO ESTADUAL' ? 'pri' : 'old'}">
+                       <f:facet name="header">
+                      TABELA GOVERNO ESTADUAL
+                      </f:facet>
+                      <p:column headerText="Nome">
+                          <h:outputText value="#{gove.nome}"/>
+                      </p:column>
+                      <p:column headerText="Valores">
+                          <h:outputText value="#{gove.valor_sttring}" />
+                      </p:column>
+                      <p:column headerText="Percentual">
+                          <h:outputText id="saldo" value="#{gove.percentual}" />
+                       </p:column>
+                    </p:dataTable>
+                    <br/>
+                    <br/>
+                   <br/>
+                   <p:dataTable id="tbgovernof" var="govf" value="#{gerarBalanceteJSFManagedBean.governof}" 
+                                rowStyleClass="#{govf.nome eq 'GOVERNO FEDERAL' ? 'pri' : 'old'}">
+                       <f:facet name="header">
+                      TABELA GOVERNO FFEDERAL
+                      </f:facet>
+                      <p:column headerText="Nome">
+                          <h:outputText value="#{govf.nome}"/>
+                      </p:column>
+                      <p:column headerText="Valores">
+                          <h:outputText value="#{govf.valor_sttring}" />
+                      </p:column>
+                      <p:column headerText="Percentual">
+                          <h:outputText id="saldo" value="#{govf.percentual}" />
+                       </p:column>
+                    </p:dataTable>
+                    <br/>
+                    <br/>
+                   <br/>
+                   <p:dataTable id="tbinstituto" var="inst" value="#{gerarBalanceteJSFManagedBean.institutos_fundacoes}" 
+                                rowStyleClass="#{inst.nome eq 'INSTITUTO FUNDAÇÕES' ? 'pri' : 'old'}">
+                       <f:facet name="header">
+                      TABELA INTITUTOS FUNDAÇÕES
+                      </f:facet>
+                      <p:column headerText="Nome">
+                          <h:outputText value="#{inst.nome}"/>
+                      </p:column>
+                      <p:column headerText="Valores">
+                          <h:outputText value="#{inst.valor_sttring}" />
+                      </p:column>
+                      <p:column headerText="Percentual">
+                          <h:outputText id="saldo" value="#{inst.percentual}" />
+                       </p:column>
+                    </p:dataTable>
+                    <br/>
+                    <br/>
+                   <br/>
+                   <p:dataTable id="tbempresas" var="emp" value="#{gerarBalanceteJSFManagedBean.empresas}" 
+                                rowStyleClass="#{emp.nome eq 'EMPRESAS PRIVADAS' ? 'pri' : 'old'}">
+                       <f:facet name="header">
+                      TABELA EMPRESAS PRIVADAS
+                      </f:facet>
+                      <p:column headerText="Nome">
+                          <h:outputText value="#{emp.nome}"/>
+                      </p:column>
+                      <p:column headerText="Valores">
+                          <h:outputText value="#{emp.valor_sttring}" />
+                      </p:column>
+                      <p:column headerText="Percentual">
+                          <h:outputText id="saldo" value="#{emp.percentual}" />
+                       </p:column>
+                    </p:dataTable>
+                    <br/>
+                    <br/>
+                   <br/>
+                   <p:dataTable id="tbreceitas" var="rec" value="#{gerarBalanceteJSFManagedBean.receitas}" 
+                                rowStyleClass="#{rec.nome eq 'RECEITAS FINANCEIRAS' ? 'pri' : 'old'}">
+                       <f:facet name="header">
+                      TABELA RECEITAS FINANCEIRAS
+                      </f:facet>
+                      <p:column headerText="Nome">
+                          <h:outputText value="#{rec.nome}"/>
+                      </p:column>
+                      <p:column headerText="Valores">
+                          <h:outputText value="#{rec.valor_sttring}" />
+                      </p:column>
+                      <p:column headerText="Percentual">
+                          <h:outputText id="saldo" value="#{rec.percentual}" />
+                       </p:column>
+                    </p:dataTable>
+                    <br/>
+                    <br/>
+                   <br/>
+                   <p:dataTable id="tbeventos" var="eve" value="#{gerarBalanceteJSFManagedBean.eventos}" 
+                                rowStyleClass="#{eve.nome eq 'EVENTOS' ? 'pri' : 'old'}">
+                       <f:facet name="header">
+                      TABELA BAZAR EVENTOS
+                      </f:facet>
+                      <p:column headerText="Nome">
+                          <h:outputText value="#{eve.nome}"/>
+                      </p:column>
+                      <p:column headerText="Valores">
+                          <h:outputText value="#{eve.valor_sttring}" />
+                      </p:column>
+                      <p:column headerText="Percentual">
+                          <h:outputText id="saldo" value="#{eve.percentual}" />
+                       </p:column>
+                    </p:dataTable>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <p:dataTable id="tbbalanco" var="bal" value="#{gerarBalanceteJSFManagedBean.balancos}" 
+                                 rowStyleClass="#{bal.nome eq 'PESSOAS FISICAS' ? 'pri' : 'old'}">
+                       <f:facet name="header">
+                      TABELA PESSOAS FÍSICAS
+                      </f:facet>
+                      <p:column headerText="Nome">
+                          <h:outputText value="#{bal.nome}"/>
+                      </p:column>
+                      <p:column headerText="Valores">
+                          <h:outputText value="#{bal.valor_sttring}" />
+                      </p:column>
+                      <p:column headerText="Percentual">
+                          <h:outputText id="saldo" value="#{bal.percentual}" />
+                       </p:column>
+                    </p:dataTable>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <p:dataTable id="tbtotal" var="tot" value="#{gerarBalanceteJSFManagedBean.resultado}" 
+                                 rowStyleClass="#{tot.nome eq 'TOTAL' ? 'pri' : 'old'}">
+                       <!--<f:facet name="header">
+                       TOTAL
+                      </f:facet>-->
+                      <p:column headerText="Nome">
+                          <h:outputText value="#{tot.nome}"/>
+                      </p:column>
+                      <p:column headerText="Valor Total">
+                          <h:outputText value="#{tot.valor_sttring}" />
+                      </p:column>
+                      <p:column headerText="Percentual Completo">
+                          <h:outputText id="saldo" value="#{tot.percentual}" />
+                       </p:column>
+                    </p:dataTable>
+                    <br/>
+                    <br/>
+                    <br/>
+           <div class="botao">
+            <p:commandButton id="buscar" value="BUSCAR" update="panel" action="#{gerarBalanceteJSFManagedBean.buscar()}" 
+                             style=" background-color: #00ff00" ajax="false">
+            <p:resetInput target="panel" /> 
+            </p:commandButton>
+               <p:commandButton id="imprimir" value="IMPRIMIR" action="#{gerarBalanceteJSFManagedBean.imprimirLista()}" 
+                                style=" background-color: #00ff00" rendered="#{gerarBalanceteJSFManagedBean.imprimir}" ajax="false">
+            <p:resetInput target="panel" /> 
+            </p:commandButton>
+        </div>
+               </div>
+        </p:panel>
+    </h:form>
+        
+    </h:body>
+</html>
+

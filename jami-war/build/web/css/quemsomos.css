@@ -1,0 +1,300 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 18/01/2019, 22:35:30
+    Author     : petter
+*/
+
+*{
+          box-sizing:border-box;              
+         }
+        
+    body {
+         margin: 0px;
+         background-color: #98fb98;
+    }
+    
+    
+    .centro-titulo-quem h1 {
+        font-family: serif;
+        font-style: initial;
+        font-size: 30px;
+        color: #000000;
+        text-align: center;
+        padding-top: 10px;
+    }
+    
+    .centro-titulo-quem {
+        width: 100%;
+        height: 50px;
+        background-color: #3cb371;
+        margin-top: 0px;
+    
+    }
+    
+    
+      
+     .column {
+           float: left;
+           padding: 15px;
+      }
+      
+      .column.side {
+
+           width: 50%;
+          
+      }
+      
+      .column.middle {
+          width: 50%;
+      }
+      .nova:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        
+        @media screen and (max-width: 600px) {
+             .column.side, .column.middle {
+              width: 100%;
+             }
+        }
+        
+        
+    
+    div.texto1 h1 {
+        font-family: serif;
+        font-size: 30px;
+        color: #333;
+        text-align: center;
+        margin-top: 30px;
+        margin-bottom: 10px;
+    }
+    
+     h1 {
+        font-family: serif;
+        font-size: 30px;
+        color: #333;
+        text-align: center;
+    }
+    
+    div.texto1{
+        
+        /*width: 1000px;*/
+        width: 100%;
+        
+    }
+   
+    div.texto1 h2{
+        font-family: serif;
+        font-size: 20px;
+        color: #333;
+        text-align: right;
+        margin-right: 80px;
+        
+        
+    }
+    
+    div.texto1 p{
+        font-family: verdana;
+        font-size: 18px;
+        color: #333;
+        text-align: left;
+        margin-top: 0px;
+        margin-left: 100px;
+        margin-right: 60px;
+        height: 20px;
+    }
+    
+    h3{
+      text-align: center;    
+    }
+    
+     .middle p{
+        font-family: verdana;
+        font-size: 15px;
+        color: #333;
+        text-align: justify;
+        margin-left: 20px;
+        margin-right: 20px;
+    } 
+    
+    .side p{
+        font-family: verdana;
+        font-size: 15px;
+        color: #333;
+        text-align: justify;
+        margin-left: 20px;
+        margin-right: 20px;
+    } 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    div.fund{     
+        padding-top: 40px;
+        text-align: center;
+    }
+    
+    div.fund h1{
+        font-family: verdana;
+        font-size: 20px;
+        color: #333;   
+        text-align: center;
+        /*text-align: left;*/
+        /*padding-left: 100px;*/
+    }
+    div.fund p{
+        font-family: verdana;
+        font-size: 12px;
+        color: #333;
+        text-align: center;
+        margin-top: 0px;
+    }
+    
+    div.pres{
+        padding-top: 40px;
+        text-align: center;
+    }
+    
+    div.pres h1{
+        font-family: verdana;
+        font-size: 20px;
+        color: #333; 
+        text-align: center;
+    }
+   div.pres p{
+        font-family: verdana;
+        font-size: 12px;
+        color: #333; 
+        text-align: center;
+        margin-top: 0px;
+
+    }
+    
+    
+    .image img{
+         width: 100%;
+         height: 450px;
+        background-image:url("../imagens/final.jpg");
+    }
+    
+    /*div.nucleo{
+        
+        width: 900px;
+        padding-top: 40px;
+        margin-left: 50px;
+            
+         
+    }*/
+    
+    div.nucleo img{
+        
+            margin-left: 90px;
+            text-align: center;
+         
+    }
+    
+    div.nucleo h1{
+        font-size: 25px;
+        text-align: left;
+        margin-left: 80px;
+        padding-top: 40px;
+        color: #000000;
+        
+    }
+    div.nucleo p{
+        font-size: 18px;
+        text-align: left;
+        margin-left: 80px;
+        color: #333;
+        margin-top: 0px;
+
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    .column {
+           float: left;
+           padding: 15px;
+      }
+      
+      .column.gestor {
+
+           width: 33%;
+          
+      }
+      
+      .column.diretoria {
+          width: 33%;
+      }
+      
+      .column.fiscal {
+          width: 33%;
+      }
+      .nomes:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        
+        @media screen and (max-width: 600px) {
+             .column.gestor, .column.diretoria, .column.fiscal {
+              width: 100%;
+             }
+        }
+        
+        .column.gestor h3{
+            
+            text-align: center;
+            
+        }
+        
+        .column.gestor p{
+            font-size: 13px;
+            color: #333;
+            margin-top: 0px;
+            text-align: center;
+            
+        }
+        
+        .column.diretoria h3{
+
+             text-align: center;
+            
+        }
+        
+        
+        .column.diretoria p{
+            font-size: 13px;
+            color: #333;
+            margin-top: 0px;
+             text-align: center;
+            
+        }
+        
+        .column.fiscal h3{
+            
+            text-align: center;
+        }
+        
+        .column.fiscal p{
+            font-size: 13px;
+            color: #333;
+            margin-top: 0px;
+            text-align: center;
+        }
+        

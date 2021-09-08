@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Papel</title>
+      <style>
+            div.botao {
+      margin-left: 390px;
+    }
+        
+    body {
+         background-color: #3cb371;
+    }
+    
+    div.cadastro {
+        margin-top: 10px;
+        margin: 0px 0px 0px 130px; 
+         
+        
+    }
+    
+    .ocupada .ui-panel-titlebar {
+    background: #3cb371;
+    color: #000000;
+    text-align: center;
+    font-size: 20px;
+}
+
+           .topnav-home {
+        overflow: hidden;
+        padding-top: 10px;
+    }
+    
+   .topnav-home a {
+        float: left;
+        display: block;
+        color: #0000ff;
+        font-style: initial;
+        font-weight: bold;
+        padding: 14px 8px;
+        text-decoration: none;
+        margin-top: 20px;
+     }
+     
+     .topnav-home a:hover {
+         color: #ff007f;
+                 
+     }
+      div.botaocadastros {
+         margin-left: 490px;
+    }
+    </style>
+    </h:head>
+    <h:body>
+        <h:form id="formPapel">
+        <p:messages autoUpdate="true"/>     
+        <p:panel id="panel" header="Cadastro de Login" styleClass="ocupada"> 
+               <div class="cor_painel">
+               <div class="cadastro">
+           <h:panelGrid columns="6" cellpadding="5"> 
+           <h:outputLabel for="cpf" value="CPF:" />
+           <p:inputMask id="cpf" value="#{papelFManagedBean.cpf_papel}" mask="999.999.999-99" size="11" />
+            <h:outputLabel for="nome" value="Nome:" />
+            <h:inputText id="nome" value="#{papelFManagedBean.nome}" size="34" />
+            <h:outputLabel for="login_cadastro" value="Login:" />
+            <p:inputText id="login_cadastro" value="#{papelFManagedBean.login_cadastro}" size="20" />
+            </h:panelGrid>
+            <h:panelGrid columns="6" cellpadding="5">
+            <h:outputLabel for="senha_cadastro" value="Senha:" />
+            <h:inputSecret id="senha_cadastro" value="#{papelFManagedBean.senha_cadastro}"></h:inputSecret>
+            <h:outputLabel for="data_nasc" value="Data Nascimento:" />
+            <p:calendar id="data_nasc" timeZone="America/Sao_Paulo" pattern="dd/MM/yyyy" mask="true" 
+                        locale="pt_BR" value="#{papelFManagedBean.data_nasc}" size="10" ></p:calendar>
+            <h:outputLabel for="papel" value="Papel:" />
+            <h:selectOneMenu id="papel" value="#{papelFManagedBean.papel_selecionado}">
+            <f:selectItem itemLabel="-- Selecione --" />
+            <f:selectItems id="papeis" value="#{papelFManagedBean.list_papel}" />
+            </h:selectOneMenu>
+           </h:panelGrid>
+              </div>
+                   <br/>
+                    <br/>
+        <div class="botao">  
+            <p:commandButton id="cadastrar" value="CADASTRAR" update="panel" action="#{papelFManagedBean.cadastrarPapel()}" 
+                             style=" background-color: #00ff00" ajax="false">
+            <p:resetInput target="panel" />
+            </p:commandButton>
+            <p:commandButton id="buscar" value="BUSCAR" update="panel" action="#{papelFManagedBean.buscarPapel()}" 
+                             style=" background-color: #00ff00" ajax="false">
+            <p:resetInput target="panel" />
+            </p:commandButton>
+            <p:commandButton id="atualizar" value="ATUALIZAR" update="panel" action="#{papelFManagedBean.atualizarPapel()}" 
+                             style=" background-color: #00ff00" ajax="false">
+            <p:resetInput target="panel" />
+            </p:commandButton>
+            <p:commandButton id="excluir" value="EXCLUIR" update="panel" action="#{papelFManagedBean.excluirPapel()}" 
+                             style=" background-color: #00ff00" ajax="false">  
+            <p:resetInput target="panel" />
+            </p:commandButton>
+        </div>
+               </div>
+        </p:panel>              
+        </h:form>
+    </h:body>
+</html>
+

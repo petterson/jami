@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Beneficio</title>
+    <style>
+            div.botao {
+      margin-left: 530px;
+    }
+        
+    body {
+         background-color: #3cb371;
+    }
+    
+    div.cadastro {
+        margin-top: 10px;
+        margin: 0px 0px 0px 120px;
+         
+        
+    }
+    
+    .ocupada .ui-panel-titlebar {
+    background: #3cb371;
+    color: #000000;
+    text-align: center;
+    font-size: 20px;
+}
+
+        .topnav-home {
+        overflow: hidden;
+        padding-top: 10px;
+    }
+    
+   .topnav-home a {
+        float: left;
+        display: block;
+        color: #0000ff;
+        font-style: initial;
+        font-weight: bold;
+        padding: 14px 8px;
+        text-decoration: none;
+        margin-top: 20px;
+     }
+     
+     .topnav-home a:hover {
+         color: #ff007f;
+                 
+     }
+      div.botaocadastros {
+         margin-left: 390px;
+    }
+
+        </style>
+    </h:head>
+    <h:body>
+        <h:form id="formPermissoes"> 
+        <p:messages autoUpdate="true"/>   
+ 
+        <p:panel id="panel" header="Cadastro de Beneficio" styleClass="ocupada"> 
+               <div class="cor_painel">
+               <div class="cadastro">
+           <h:panelGrid columns="6" cellpadding="5">  
+            <h:outputLabel value="Tipo de Beneficio:" />    
+            <h:selectOneMenu id="beneficio" value="#{beneficioConcedidoJSFManagedBean.nome_concedido}">
+            <f:selectItem itemLabel="--Selecione--" />
+            <f:selectItems value="#{beneficioConcedidoJSFManagedBean.nome_concedidos}" />
+            </h:selectOneMenu>
+            <h:outputLabel for="valor" value="Valor do Beneficio:" />
+            <p:spinner id="valor" value="#{beneficioConcedidoJSFManagedBean.valor_concedido}" prefix="$ " suffix=",00" size="10" min="50" stepFactor="10" />
+            <h:outputLabel for="beneficiario" value="Beneficiário: " />
+            <h:selectOneMenu id="beneficiario" value="#{beneficioConcedidoJSFManagedBean.nome_beneficiario}">
+            <f:selectItem  itemLabel="--Selecione--" />
+            <f:selectItems value="#{beneficioConcedidoJSFManagedBean.nome_beneficiarios}" />
+            </h:selectOneMenu>
+           </h:panelGrid>
+            <h:panelGrid columns="2" cellpadding="5"> 
+            <h:outputLabel value="Data do Beneficio:" />
+            <p:calendar id="data_beneficio" timeZone="America/Sao_Paulo" pattern="dd/MM/yyyy" locale="pt_BR" mask="true" 
+                        value="#{beneficioConcedidoJSFManagedBean.data_concedido}" size="10" ></p:calendar>
+            </h:panelGrid> 
+            </div>
+                   <br/>
+            <div class="botaocadastros">
+                <div class="topnav-home">
+                   <a href="http://localhost:8080/jami-war/securi/beneficiario.xhtml">CADASTRO BENEFICIÁRIO</a>
+                   <a href="http://localhost:8080/jami-war/securi/tipo_beneficio.xhtml">CADASTRO TIPO BENEFICIO</a>
+                   </div>
+            </div>
+            <br/>
+            <br/>
+        <div class="botao">  
+            <p:commandButton id="cadastrar" value="CADASTRAR" update="panel" action="#{beneficioConcedidoJSFManagedBean.cadastrarBeneficioConcedido()}" 
+                             style=" background-color: #00ff00" ajax="false">
+            <p:resetInput target="panel" />
+            </p:commandButton>
+        </div>
+            </div>
+         </p:panel> 
+        </h:form> 
+    </h:body>
+</html>
+

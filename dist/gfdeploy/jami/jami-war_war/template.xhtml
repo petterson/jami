@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title></title>
+        <style type="text/css">
+            
+    div {
+      margin-left: 390px;
+    }
+    body{
+         background-color: #3cb371;
+    }
+        </style>
+    </h:head>
+    <h:body>
+       
+           <div1 id="top" class="top">
+           <ui:insert name="top">
+         <h:form>  
+           <p:growl id="growl" life="2000" />
+           <div>
+           <p:commandButton value="CADASTRAR" id="cadastrar" update="growl" actionListener="#{buttonView.buttonAction}" style=" background-color: #00ff00" />
+           <p:commandButton value="ATUALIZAR" id="atualizar" actionListener="#{buttonView.buttonAction}" style=" background-color: #00ff00" />
+           <p:commandButton value="LISTAR" id="listar" actionListener="#{buttonView.buttonAction}" style=" background-color: #00ff00" />
+           <p:commandButton value="EXCLUIR" id="excluir" actionListener="#{buttonView.buttonAction}" style=" background-color: #00ff00" />
+           </div>
+         </h:form>
+            </ui:insert>
+        </div1>
+        <div2 id="content" class="center_content">
+            <ui:insert name="content"></ui:insert>
+        </div2>
+    </h:body>
+</html>
+
+

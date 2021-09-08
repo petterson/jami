@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>ListaBeneficio</title>
+    <style>
+            div.botao {
+      margin-left: 500px;
+    }
+        
+    body {
+         background-color: #3cb371;
+    }
+    
+    div.cadastro {
+        margin-top: 10px;
+        margin: 0px 0px 0px 150px;
+         
+        
+    }
+    
+    .ocupada .ui-panel-titlebar {
+    background: #3cb371;
+    color: #000000;
+    text-align: center;
+    font-size: 20px;
+}
+      .topnav-home {
+        overflow: hidden;
+        padding-top: 10px;
+    }
+    
+   .topnav-home a {
+        float: left;
+        display: block;
+        color: #0000ff;
+        font-style: initial;
+        font-weight: bold;
+        padding: 14px 8px;
+        text-decoration: none;
+        margin-top: 20px;
+     }
+     
+     .topnav-home a:hover {
+         color: #ff007f;
+                 
+     }
+     div.botaocadastros {
+         margin-left: 550px;
+    }    
+
+        </style>
+    </h:head>
+    <h:body>
+        <h:form id="formPermissoes"> 
+        <p:messages autoUpdate="true"/>
+ 
+        <p:panel id="panel" header="Lista Beneficios" styleClass="ocupada"> 
+               <div class="cor_painel">
+               <div class="cadastro">
+           <h:panelGrid columns="6" cellpadding="5">  
+           <h:outputLabel for="beneficiario" value="Selecione Beneficiário:" /> 
+           <h:selectOneMenu id="beneficiarios" value="#{listaBeneficiarioJSFManagedBean.beneficiario_selecionado}">
+            <f:selectItem itemLabel="-- Selecione --" />
+            <f:selectItem itemValue="Todas" itemLabel="Todas" />
+            <f:selectItems id="beneficiario" value="#{listaBeneficiarioJSFManagedBean.nome_beneficiarios}" />
+            </h:selectOneMenu>      
+           <h:outputLabel value="Data Inicial:" />
+           <p:calendar id="data_inicial" timeZone="America/Sao_Paulo" pattern="dd/MM/yyyy" mask="true" locale="pt_BR" 
+                       value="#{listaBeneficiarioJSFManagedBean.data_inicial}" size="10" ></p:calendar>
+           <h:outputLabel value="Data Final:" />
+           <p:calendar id="data_final" timeZone="America/Sao_Paulo" pattern="dd/MM/yyyy" mask="true" locale="pt_BR" 
+                       value="#{listaBeneficiarioJSFManagedBean.data_final}" size="10" ></p:calendar> 
+           </h:panelGrid> 
+            </div>
+            <div class="botaocadastros">
+                <div class="topnav-home">
+                   <a href="http://localhost:8080/jami-war/securi/gerente.xhtml">VOLTAR</a>
+                </div>
+            </div>
+            <br/>
+            <br/>
+            <p:dataTable id="tbbeneficio" var="ben" value="#{listaBeneficiarioJSFManagedBean.list_beneficios}"
+                         rowKey="#{ben.id}" selection="#{listaBeneficiarioJSFManagedBean.b}" selectionMode="single" >
+                      <f:facet name="header">
+                      TABELA LISTA BENEFICIOS CONCEDIDOS
+                      </f:facet>
+                      <p:column headerText="ID" style="width: 90px">
+                          <h:outputText value="#{ben.id}" >
+                           </h:outputText>
+                      </p:column>
+                      <p:column headerText="Tipo de Beneficio">
+                          <h:outputText value="#{ben.nome_beneficio.nome_beneficio}">
+                           </h:outputText>
+                      </p:column>
+                      <p:column headerText="Valor do Beneficio">
+                          <h:outputText value="#{ben.valor_beneficio}">
+                           </h:outputText>
+                      </p:column>
+                      <p:column headerText="Beneficiário">
+                          <h:outputText value="#{ben.beneficiario.pessoa.nome}" />
+                       </p:column>
+                       <p:column headerText="Data do Beneficio" style="width: 100px">
+                           <h:outputText value="#{ben.data_beneficio}" >
+                           <f:convertDateTime pattern="dd/MM/yyyy" />
+                           </h:outputText>
+                       </p:column>
+                    </p:dataTable>
+            <br/>
+            <br/>
+        <div class="botao">  
+            <p:commandButton id="buscar" value="BUSCAR" update="panel" action="#{listaBeneficiarioJSFManagedBean.buscarBeneficioConcedidos()}" 
+                             style=" background-color: #00ff00" ajax="false">
+            <p:resetInput target="panel" />
+            </p:commandButton>
+            <p:commandButton id="excluir" value="EXCLUIR" update="tbbeneficio" action="#{listaBeneficiarioJSFManagedBean.excluirBeneficioConcedido()}" 
+                             style=" background-color: #00ff00">
+        <p:resetInput target="panel" />   
+        </p:commandButton>
+        </div>
+        </div>
+         </p:panel> 
+        </h:form>
+    </h:body>
+</html>
+

@@ -1,0 +1,133 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Turma</title>
+   <style>
+            div.botao {
+      margin-left: 370px;
+    }
+        
+    body {
+         background-color: #3cb371;
+    }
+    
+    div.cadastro {
+        margin-top: 10px;
+        margin: 0px 0px 0px 150px; 
+         
+        
+    }
+    
+    .ocupada .ui-panel-titlebar {
+    background: #3cb371;
+    color: #000000;
+    text-align: center;
+    font-size: 20px;
+}
+          .topnav-home {
+        overflow: hidden;
+        padding-top: 10px;
+    }
+    
+   .topnav-home a {
+        float: left;
+        display: block;
+        color: #0000ff;
+        font-style: initial;
+        font-weight: bold;
+        padding: 14px 8px;
+        text-decoration: none;
+        margin-top: 20px;
+     }
+     
+     .topnav-home a:hover {
+         color: #ff007f;
+                 
+     }
+      div.botaocadastros {
+         margin-left: 550px;
+    }
+
+        </style>
+    </h:head>
+    <h:body>
+        <h:form id="formPermissoes"> 
+               <p:messages autoUpdate="true"/>
+ 
+               <p:panel id="panel" header="Cadastro de Turma" styleClass="ocupada"> 
+               <div class="cor_painel">
+               <div class="cadastro">
+           <h:panelGrid columns="8" cellpadding="5">  
+            <h:outputLabel value="Nome:" />
+            <h:inputText id="nome_turma" value="#{turmaSFManagedBean.nome_turma}" size="38" />
+            <h:outputLabel for="professor" value="Professor:" />
+            <h:selectOneMenu id="professor" value="#{turmaSFManagedBean.professor_turma}">
+            <f:selectItem itemLabel="- Selecione -" />
+            <f:selectItems id="professors" value="#{turmaSFManagedBean.nome_professores}" />
+            </h:selectOneMenu>  
+             <h:outputLabel for="selecao_alunos" value="Alunos: " />
+             <p:selectCheckboxMenu id = "selecao_alunos" value="#{turmaSFManagedBean.nome_alunos_selecionados}" label="Alunos"     
+                                   filter = "true" filterMatchMode = "startsWith" panelStyle = "width: 250px">
+                 <f:selectItems id="selecao_aluno" value="#{turmaSFManagedBean.nome_alunos}" />
+            </p:selectCheckboxMenu >  
+            </h:panelGrid> 
+            <h:panelGrid columns="6" cellpadding="5">
+            <h:outputLabel value="Data Criação:" />
+            <p:calendar id="data_criacao" timeZone="America/Sao_Paulo" pattern="dd/MM/yyyy" locale="pt_BR" mask="true"
+                        value="#{turmaSFManagedBean.data_ciracao}" maxdate="#{turmaSFManagedBean.dataAtual()}" size="10" ></p:calendar>
+            <h:outputLabel for="chamada" value="Chamada: " />
+            <h:selectOneMenu id="chamada" value="#{turmaSFManagedBean.chamada_turma}">
+            <f:selectItem itemLabel="- Selecione -" />
+            <f:selectItems id="chamada_aluno" value="#{turmaSFManagedBean.nome_chamadas}" />
+            </h:selectOneMenu> 
+            <h:outputLabel for="turno" value="Turno: " />
+            <h:selectOneMenu id="turno" value="#{turmaSFManagedBean.turno_turma}">
+            <f:selectItem itemLabel="- Selecione -" />
+            <f:selectItems id="turnos" value="#{turmaSFManagedBean.list_turno}" />
+            </h:selectOneMenu> 
+            </h:panelGrid>
+            </div>     
+            <br/>
+             <br/>
+            <div class="botaocadastros">
+                <div class="topnav-home">
+                   <a href="http://localhost:8080/jami-war/securio/chamada.xhtml">CHAMADA</a>
+                   </div>
+            </div>
+                   <br/>
+                    <br/>
+            <br/>
+           <p:growl id="growl" life="2000" showDetail="true" sticky="true" />
+        <div class="botao">  
+            <p:commandButton id="cadastrar" value="CADASTRAR" update="panel" action="#{turmaSFManagedBean.cadastrarTurma()}" 
+                             style=" background-color: #00ff00" ajax="false" >
+            <p:resetInput target="panel" />
+            </p:commandButton>
+            <p:commandButton id="buscar" value="BUSCAR" update="panel" action="#{turmaSFManagedBean.buscarTurma()}" 
+                             style=" background-color: #00ff00" ajax="false" >
+            <p:resetInput target="panel" />
+            </p:commandButton>
+            <p:commandButton id="atualizar" value="ATUALIZAR" update="panel" action="#{turmaSFManagedBean.atualizarTurma()}" 
+                             style=" background-color: #00ff00" ajax="false" >
+            <p:resetInput target="panel" />
+            </p:commandButton>
+            <p:commandButton id="excluir" value="EXCLUIR" update="panel" action="#{turmaSFManagedBean.excluirTurma()}" 
+                             style=" background-color: #00ff00" ajax="false" >
+            <p:resetInput target="panel" />
+            </p:commandButton>
+        </div>
+            
+            </div>
+         </p:panel> 
+        </h:form>
+    </h:body>
+</html>
+
+

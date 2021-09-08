@@ -1,0 +1,199 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Atualizar Balancete</title>
+         <style>
+            div.botao {
+      margin-left: 550px;
+    }
+        
+    body {
+         background-color: #3cb371;
+    }
+    
+    div.cadastro {
+        margin-top: 10px;
+        margin: 0px 0px 0px 250px;
+    }
+    
+    
+    .ocupada .ui-panel-titlebar {
+    background: #3cb371;
+    color: #000000;
+    text-align: center;
+    font-size: 20px;
+}
+
+
+            .topnav-home {
+        overflow: hidden;
+        padding-top: 10px;
+    }
+    
+   .topnav-home a {
+        float: left;
+        display: block;
+        color: #0000ff;
+        font-style: initial;
+        font-weight: bold;
+        padding: 14px 8px;
+        text-decoration: none;
+        margin-top: 20px;
+     }
+     
+     .topnav-home a:hover {
+         color: #ff007f;
+                 
+     }
+      div.botaocadastros {
+          margin-left: 390px;
+      }
+      
+      h1{
+          text-align: center;
+      }
+      
+      .old {
+        background-color: #fca752 !important;
+        background-image: none !important;
+        color: #000000 !important;
+    }
+
+        </style>
+    </h:head>
+    <h:body>
+        <h:form id="formPermissoes"> 
+        <p:messages autoUpdate="true"/>
+        <p:growl id="growlAtuaEntrada" showDetail="true"/>
+            
+        <p:panel id="panel" header="Atualizar Balancete" styleClass="ocupada"> 
+               <div class="cor_painel">
+               <div class="cadastro">
+           <h:panelGrid columns="6" cellpadding="5">             
+            <h:outputLabel for="conta" value="Numero Conta:"/>
+            <h:outputText id="conta" value="#{atualizaBalanceteJSFManagedBean.numero_conta}" style="background: #00ff00"/>
+            <h:outputLabel for="data_inicial" value="Data Inícial:" />
+            <h:outputText id="data_inicial" value="#{atualizaBalanceteJSFManagedBean.data_inicial}" style="background: #00ff00">
+            <f:convertDateTime pattern="dd/MM/yyyy"/>
+            </h:outputText>
+            <h:outputLabel for="data_final" value="Data Final:" />
+            <p:calendar id="data_final" timeZone="America/Sao_Paulo" pattern="dd/MM/yyyy" locale="pt_BR" mask="true"
+                        value="#{atualizaBalanceteJSFManagedBean.data_final}" 
+                        maxdate="#{balanceteJSFManagedBean.dataAtual()}" size="10" ></p:calendar>
+           </h:panelGrid>
+           <h:panelGrid columns="4" cellpadding="5">
+            <h:outputLabel for="saldo" value="Saldo:" />
+            <h:outputText id="saldo" value="#{atualizaBalanceteJSFManagedBean.valor_atual}" style="background: #00ff00"/>
+            <h:outputLabel for="balancetes" value="Descrição :" />
+            <h:selectOneMenu id="balancetes" value="#{atualizaBalanceteJSFManagedBean.descricao}" 
+                             valueChangeListener="#{atualizaBalanceteJSFManagedBean.getBalancete(event)}">
+            <f:selectItem itemLabel="-- Selecione --" />
+            <f:selectItems id="balancete" value = "#{atualizaBalanceteJSFManagedBean.nome_dos_balancetes}" /> 
+            <p:ajax event="change" process="@this" update="formPermissoes: conta, data_inicial, data_final, saldo, tbsaida, tbconta, tbentrada" 
+                    listener="#{atualizaBalanceteJSFManagedBean.getBalancete(event)}"/>
+            </h:selectOneMenu>
+            </h:panelGrid>
+               </div>
+            <div class="botaocadastros">
+                <div class="topnav-home">
+                   <a href="http://localhost:8080/jami-war/securif/entrada.xhtml">REGISTRAR ENTRADA</a>
+                   <a href="http://localhost:8080/jami-war/securif/saida.xhtml">REGISTRAR SAIDA</a>
+                   <a href="http://localhost:8080/jami-war/securif/financeiro.xhtml">VOLTAR</a>
+                </div> 
+            </div>
+                   <br/>
+                   <!--<h1> ENTRADA</h1>-->
+                   <p:dataTable id="tbentrada" var="ent" value="#{atualizaBalanceteJSFManagedBean.entradas}">
+                       <f:facet name="header">
+                      TABELA ENTRADA
+                      </f:facet>
+                      <p:column headerText="ID" style="width: 120px">
+                          <h:outputText value="#{ent.id}" />
+                       </p:column>
+                      <p:column headerText="Data Emissão" style="width: 120px">
+                           <h:outputText value="#{ent.data_emissao}">
+                           <f:convertDateTime pattern="dd/MM/yyyy" />
+                           </h:outputText>
+                      </p:column>
+                      <p:column headerText="Data Compensação" style="width: 120px">
+                          <h:outputText value="#{ent.data_conpensacao}">
+                           <f:convertDateTime pattern="dd/MM/yyyy" />
+                           </h:outputText>
+                      </p:column>
+                      <p:column headerText="N Cheque ou Transferência">
+                          <h:outputText value="#{ent.nome_cheque}" />
+                       </p:column>
+                       <p:column headerText="Descrição">
+                           <h:outputText value="#{ent.nome_descricao}" />
+                       </p:column>
+                       <p:column headerText="Valor" style="width: 120px">
+                           <h:outputText value="#{ent.valor_entrada}" />
+                       </p:column>
+                    </p:dataTable>
+                    <br/>
+                    <br/>
+                   <!--<h1> SAIDA</h1>-->
+                   <p:dataTable id="tbsaida" var="sai" value="#{atualizaBalanceteJSFManagedBean.saidas}">
+                       <f:facet name="header">
+                      TABELA SAIDA
+                      </f:facet>
+                      <p:column headerText="ID" style="width: 120px">
+                          <h:outputText value="#{sai.id}" />
+                       </p:column>
+                      <p:column headerText="Data Emissão" style="width: 120px">
+                          <h:outputText value="#{sai.data_emissao}">
+                          <f:convertDateTime pattern="dd/MM/yyyy" />
+                          </h:outputText>
+                      </p:column>
+                      <p:column headerText="Data Compensação" style="width: 120px">
+                          <h:outputText value="#{sai.data_compensacao}">
+                          <f:convertDateTime pattern="dd/MM/yyyy" />
+                          </h:outputText>
+                      </p:column>
+                      <p:column headerText="N Cheque ou Traansferência">
+                          <h:outputText value="#{sai.nome_cheque}" />
+                       </p:column>
+                       <p:column headerText="Descrição">
+                           <h:outputText value="#{sai.nome_descricao}" />
+                       </p:column>
+                       <p:column headerText="Valor" style="width: 120px">
+                           <h:outputText value="#{sai.valor_saida}" />
+                       </p:column>
+                    </p:dataTable>
+                    <br/>
+                    <br/>
+                    <p:dataTable id="tbconta" var="con" value="#{atualizaBalanceteJSFManagedBean.os_balancetes}">
+                       <f:facet name="header">
+                      TABELA SALDO EM CONTA
+                      </f:facet>
+                      <p:column headerText="Data">
+                          <h:outputText value="#{con.data_final}">
+                          <f:convertDateTime pattern="dd/MM/yyyy" />
+                         </h:outputText>
+                      </p:column>
+                      <p:column headerText="Conta">
+                          <h:outputText value="#{con.numero_conta}" />
+                      </p:column>
+                      <p:column headerText="Saldo">
+                          <h:outputText id="saldo" value="#{con.saldo}" />
+                       </p:column>
+                    </p:dataTable>
+                    <br/>
+                    <br/>
+                    <br/>
+            <div class="botao">  
+                <p:commandButton id="imprimir" value="IMPRIMIR" update="panel" action="#{atualizaBalanceteJSFManagedBean.imprimirLista()}" 
+                                 style=" background-color: #00ff00" ajax="false"> 
+            <p:resetInput target="panel" />
+            </p:commandButton>
+            </div>
+               </div>
+        </p:panel>
+    </h:form>
+    </h:body>
+</html>
+

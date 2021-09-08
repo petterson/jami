@@ -1,0 +1,193 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Lista Sexo Turno</title>
+        <style>
+            div.botao {
+      margin-left: 550px;
+    }
+        
+    body {
+         background-color: #3cb371;
+    }
+    
+    
+    .ocupada .ui-panel-titlebar {
+    background: #3cb371;
+    color: #000000;
+    text-align: center;
+    font-size: 20px;
+}
+.ui-panel{
+    
+    height: 1400px;
+}
+         .ui-datatable {
+      margin-bottom:20px;
+  }
+ 
+  .ui-datatable-frozenlayout-left {
+      width:40%;
+  }
+ 
+  .ui-datatable-frozenlayout-right {
+      width:120%;
+  }
+  
+  .topnav-home {
+        overflow: hidden;
+        padding-top: 10px;
+    }
+    
+   .topnav-home a {
+        float: left;
+        display: block;
+        color: #00ff00;
+        font-style: initial;
+        font-weight: bold;
+        padding: 14px 8px;
+        text-decoration: none;
+        margin-top: 0px;
+     }
+     
+     .topnav-home a:hover {
+         color: #ff007f;
+                 
+     }
+     
+     div.botaocadastros {
+          margin-left: 550px;
+      }
+  
+    </style>
+    </h:head>
+    <h:body>
+           <h:form id="formPermissoes"> 
+               <p:messages autoUpdate="true"/>
+            
+            <p:panel id="panel" header="Lista Aluno Sexo Turno" styleClass="ocupada"> 
+            <div class="botaocadastros">
+                <div class="topnav-home">
+                   <a href="http://localhost:8080/jami-war/securio/operacional.xhtml">VOLTAR</a>
+                </div> 
+            </div>
+            <br/>
+            <p:dataTable id="tbmasmanha" var="masmanha" value="#{alunoSexoTurnoJSFManagedBean.list_masc_manha}" 
+                         scrollable="true" scrollHeight="200">
+                       <f:facet name="header">
+                      Lista Masculino Manhã
+                      </f:facet>
+                      <p:column headerText="Nome" style="width: 130px">
+                          <h:outputText value="#{masmanha.pessoa.nome}"/>
+                       </p:column>
+                      <p:column headerText="Sexo" style="width: 80px">
+                          <h:outputText value="#{masmanha.sexo}"/>
+                      </p:column>
+                      <p:column headerText="Telefone" style="width: 130px">
+                          <h:outputText value="#{masmanha.fone_aluno}"/>
+                      </p:column>
+                      <p:column headerText="Raça/Cor" style="width: 70px">
+                          <h:outputText id="raca" value="#{masmanha.cor_raca}">
+                           </h:outputText>
+                      </p:column>
+                       <p:column headerText="Situação" style="width: 70px">
+                           <h:outputText value="#{masmanha.situacao}" />
+                       </p:column>
+                       <p:column headerText="Turno" style="width: 60px">
+                           <h:outputText value="#{masmanha.turno}" />
+                       </p:column>
+                </p:dataTable>
+                    <br/>
+                    <p:dataTable id="tbmastarde" var="mastarde" value="#{alunoSexoTurnoJSFManagedBean.list_masc_tarde}" 
+                         scrollable="true" scrollHeight="200">
+                       <f:facet name="header">
+                      Lista Masculino Tarde
+                      </f:facet>
+                      <p:column headerText="Nome" style="width: 130px">
+                          <h:outputText value="#{mastarde.pessoa.nome}"/>
+                       </p:column>
+                      <p:column headerText="Sexo" style="width: 80px">
+                          <h:outputText value="#{mastarde.sexo}"/>
+                      </p:column>
+                      <p:column headerText="Telefone" style="width: 130px">
+                          <h:outputText value="#{mastarde.fone_aluno}"/>
+                      </p:column>
+                      <p:column headerText="Raça/Cor" style="width: 70px">
+                          <h:outputText id="raca" value="#{mastarde.cor_raca}">
+                           </h:outputText>
+                      </p:column>
+                       <p:column headerText="Situação" style="width: 70px">
+                           <h:outputText value="#{mastarde.situacao}" />
+                       </p:column>
+                       <p:column headerText="Turno" style="width: 60px">
+                           <h:outputText value="#{mastarde.turno}" />
+                       </p:column>
+                        </p:dataTable>
+                    <br/>
+                    <p:dataTable id="tbfemmanha" var="femmanha" value="#{alunoSexoTurnoJSFManagedBean.list_femi_manha}" 
+                         scrollable="true" scrollHeight="200">
+                       <f:facet name="header">
+                      Lista Feminino Manhã
+                      </f:facet>
+                      <p:column headerText="Nome" style="width: 130px">
+                          <h:outputText value="#{femmanha.pessoa.nome}"/>
+                       </p:column>
+                      <p:column headerText="Sexo" style="width: 80px">
+                          <h:outputText value="#{femmanha.sexo}"/>
+                      </p:column>
+                      <p:column headerText="Telefone" style="width: 130px">
+                          <h:outputText value="#{femmanha.fone_aluno}"/>
+                      </p:column>
+                      <p:column headerText="Raça/Cor" style="width: 70px">
+                          <h:outputText id="raca" value="#{femmanha.cor_raca}">
+                           </h:outputText>
+                      </p:column>
+                       <p:column headerText="Situação" style="width: 70px">
+                           <h:outputText value="#{femmanha.situacao}" />
+                       </p:column>
+                       <p:column headerText="Turno" style="width: 60px">
+                           <h:outputText value="#{femmanha.turno}" />
+                       </p:column>
+                       </p:dataTable>
+                    <br/>
+                    <p:dataTable id="tbfemtarde" var="femtarde" value="#{alunoSexoTurnoJSFManagedBean.list_femi_tarde}" 
+                         scrollable="true" scrollHeight="200">
+                       <f:facet name="header">
+                      Lista Feminino Tarde
+                      </f:facet>
+                      <p:column headerText="Nome" style="width: 130px">
+                          <h:outputText value="#{femtarde.pessoa.nome}"/>
+                       </p:column>
+                      <p:column headerText="Sexo" style="width: 80px">
+                          <h:outputText value="#{femtarde.sexo}"/>
+                      </p:column>
+                      <p:column headerText="Telefone" style="width: 130px">
+                          <h:outputText value="#{femtarde.fone_aluno}"/>
+                      </p:column>
+                      <p:column headerText="Raça/Cor" style="width: 70px">
+                          <h:outputText id="raca" value="#{femtarde.cor_raca}">
+                           </h:outputText>
+                      </p:column>
+                       <p:column headerText="Situação" style="width: 70px">
+                           <h:outputText value="#{femtarde.situacao}" />
+                       </p:column>
+                       <p:column headerText="Turno" style="width: 60px">
+                           <h:outputText value="#{femtarde.turno}" />
+                       </p:column>
+                       </p:dataTable>
+                    <br/>
+            <div class="botao">  
+                <p:commandButton id="imprimir" value="IMPRIMIR" update="panel" action="#{alunoSexoTurnoJSFManagedBean.imprimirLista()}" 
+                                 style=" background-color: #00ff00" ajax="false"> 
+            <p:resetInput target="panel" />
+            </p:commandButton>
+            </div>
+        </p:panel>
+    </h:form>
+    </h:body>
+</html>
+

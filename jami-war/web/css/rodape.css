@@ -1,0 +1,162 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 18/01/2019, 14:59:06
+    Author     : petter
+*/
+
+
+
+*{
+          box-sizing:border-box;   
+          margin-top: 0px;
+         }
+        
+    body {
+         width: 100%;
+    }
+    
+    
+    
+    
+    /*///////////////////////Rodape///////////////////////////*/
+    
+    
+
+        .footer {
+            background-color: #3cb371;
+            height: 360px;
+            width: 100%;
+            
+        }
+        
+       div.footer h1{
+            color: #000000;
+            font-family: verdana;
+            font-size: 15px;
+            text-align: center;
+        }
+        
+        
+        
+        /*///////////////////////Rodape Galeri///////////////////////////*/
+        
+        
+        
+        div.gallerya {
+            margin: 22px;
+            border-radius: 10px;
+            float: left;
+            width: 100px;
+            padding-left: 15px;
+        }
+        
+        div.gallerya img {
+             width: 100%;
+             height: auto;
+             border-radius: 10px;
+        }
+        
+        
+        
+       
+        
+        
+        /*///////////////////////Rodape Colunas///////////////////////////*/
+        
+        
+        
+      .column {
+           float: left;
+      }
+      
+      .column.contato {
+
+           width: 73%;
+          
+      }
+      
+      .column.icom {
+          width: 27%;
+      }
+      .sociais:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        
+        @media screen and (max-width: 600px) {
+             .column.contato, .column.icom {
+              width: 100%;
+             }
+        }
+        
+        
+     
+     
+        
+        /*///////////////////////Rede Sociais///////////////////////////*/
+        
+        
+        
+        
+        .redesociais a {
+            float: left;
+            display: block;
+            padding: 13px 13px;
+            text-decoration: none;
+            margin-top: 0;
+       
+     }
+     
+     /*.a2a_kit a2a_kit_size_32 a2a_default_style a {
+            float: left;
+            display: block;
+            padding: 13px 13px;
+            text-decoration: none;
+            margin-top: 0;
+       
+     }*/
+     
+     .redesociais a:hover {
+            color: #00ffff;
+         
+     }
+     
+     .column.icom h3{
+         
+         text-align: left;
+         padding-top: 30px;
+         margin-bottom: 0px;
+     }
+     
+     
+     
+     
+     /*///////////////////////Coluna contato///////////////////////////*/
+     
+     
+     
+     
+     div.contato h3{
+            text-align: left;
+            margin-left: 40px;
+        }
+        
+         div.contato p{
+            margin-top: 0px;
+            margin-left: 40px;
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+ 

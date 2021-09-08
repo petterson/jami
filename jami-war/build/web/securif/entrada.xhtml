@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+         <title>Entrada</title>
+         <style>
+            div.botao {
+      margin-left: 450px;
+    }
+        
+    body {
+         background-color: #3cb371;
+    }
+    
+    div.cadastro {
+        margin-top: 10px;
+        margin: 0px 0px 0px 80px;
+    }
+    
+    .ocupada .ui-panel-titlebar {
+    background: #3cb371;
+    color: #000000;
+    text-align: center;
+    font-size: 20px;
+}
+
+
+            .topnav-home {
+        overflow: hidden;
+        padding-top: 10px;
+    }
+    
+   .topnav-home a {
+        float: left;
+        display: block;
+        color: #0000ff;
+        font-style: initial;
+        font-weight: bold;
+        padding: 14px 8px;
+        text-decoration: none;
+        margin-top: 20px;
+     }
+     
+     .topnav-home a:hover {
+         color: #ff007f;
+                 
+     }
+      div.botaocadastros {
+          margin-left: 390px;
+      }
+
+        </style>
+    </h:head>
+    <h:body>
+        <h:form id="formPermissoes"> 
+            <p:messages autoUpdate="true"/>
+            <p:growl id="growlListaEntrada" showDetail="true"/>
+            
+            <p:panel id="panel" header="Cadastro de Entrada" styleClass="ocupada"> 
+               <div class="cor_painel">
+               <div class="cadastro">
+           <h:panelGrid columns="6" cellpadding="5">  
+               <h:outputLabel for="data_emissao" value="Data Emissão:" />
+           <p:calendar id="data_emissao" timeZone="America/Sao_Paulo" pattern="dd/MM/yyyy" mask="true" locale="pt_BR" value="#{entradaJSFManagedBean.data_emissao_entrada}" 
+                       mindate="#{entradaJSFManagedBean.dataAtual()}" size="10" ></p:calendar>
+           <h:outputLabel for="data_compensacao" value="Data Compensação:" />
+           <p:calendar id="data_compensacao" timeZone="America/Sao_Paulo" pattern="dd/MM/yyyy" mask="true" locale="pt_BR" value="#{entradaJSFManagedBean.data_compensacao_entrada}" 
+                       mindate="#{entradaJSFManagedBean.dataAtual()}" size="10" ></p:calendar>
+            <h:outputLabel for="cheque" value="N do Cheque ou Transferência:" />
+            <h:selectOneMenu id="cheques" value="#{entradaJSFManagedBean.nome_cheque_entrada}">
+            <f:selectItem itemLabel="--Selecione--" />
+            <f:selectItems id="cheque" value="#{entradaJSFManagedBean.nome_cheques}" />
+            </h:selectOneMenu>
+            </h:panelGrid>
+            <h:panelGrid columns="4" cellpadding="5"> 
+             <h:outputLabel for="descricao" value="Descrição:" />
+             <h:selectOneMenu id="descricoes" value="#{entradaJSFManagedBean.nome_descricao_entrada}">
+            <f:selectItem itemValue="Selecione" itemLabel="--Selecione--" />
+            <f:selectItems id="descricao" value="#{entradaJSFManagedBean.nome_descricoes}" />
+            </h:selectOneMenu>
+            <h:outputLabel for="valor" value="Valor $ " />
+            <p:spinner id="valor" value="#{entradaJSFManagedBean.valor_entrada}" prefix="$ " suffix=",00" min="10.0" size="10" stepFactor="10" />
+            </h:panelGrid>
+               </div>
+                    <br/>
+            <div class="botaocadastros">
+                <div class="topnav-home">
+                   <a href="http://localhost:8080/jami-war/securif/numero_cheque.xhtml">N CHEQUE OU TRANSFERÊNCIA</a>
+                   <a href="http://localhost:8080/jami-war/securif/descricao.xhtml">DESCRIÇAO</a>
+                   </div>
+            </div> <br/>
+                    <!--<h1> ENTRADA</h1>-->
+                    <p:dataTable id="tbentrada" var="ent" value="#{entradaJSFManagedBean.entradas}" 
+                                 rowKey="#{ent.id}" selection="#{entradaJSFManagedBean.e}" selectionMode="single" >
+                      <f:facet name="header">
+                      TABELA ENTRADA
+                      </f:facet>
+                      <p:column headerText="ID " style="width: 120px">
+                          <h:outputText value="#{ent.id}" />                         
+                      </p:column>
+                      <p:column headerText="Data Emissão" style="width: 120px">
+                          <h:outputText value="#{ent.data_emissao}">
+                           <f:convertDateTime pattern="dd/MM/yyyy" />
+                           </h:outputText>
+                      </p:column>
+                      <p:column headerText="Data Compensação" style="width: 120px">
+                          <h:outputText value="#{ent.data_conpensacao}">
+                           <f:convertDateTime pattern="dd/MM/yyyy" />
+                           </h:outputText>
+                      </p:column>
+                      <p:column headerText="N Cheque ou Transferência">
+                          <h:outputText value="#{ent.nome_cheque}" />
+                       </p:column>
+                       <p:column headerText="Descrição">
+                           <h:outputText value="#{ent.nome_descricao}" />
+                       </p:column>
+                       <p:column headerText="Valor" style="width: 120px">
+                           <h:outputText value="#{ent.valor_entrada}" />
+                       </p:column>
+                    </p:dataTable> 
+                   <br/>
+                    <br/>
+                    <p:growl id="growl" life="2000" showDetail="true" sticky="true" />
+        <div class="botao">  
+        <p:commandButton id="cadastrar" value="CADASTRAR" update="tbentrada" action="#{entradaJSFManagedBean.cadastrarEntrada()}"
+                             style=" background-color: #00ff00" >
+        <p:resetInput target="panel" />   
+        </p:commandButton>
+            <p:commandButton id="excluir" value="EXCLUIR" update="tbentrada" action="#{entradaJSFManagedBean.excluirEntrada()}" 
+                             style=" background-color: #00ff00">
+        <p:resetInput target="panel" />   
+        </p:commandButton>
+        </div>
+               </div>
+        </p:panel>
+    </h:form>
+    </h:body>
+</html>
+

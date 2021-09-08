@@ -1,0 +1,588 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 22/01/2019, 14:41:13
+    Author     : petter
+*/
+
+*{
+          box-sizing:border-box;              
+         }
+        
+    body {
+         margin: 0px;
+         background-color: #98fb98;
+    }
+    
+    h1 {
+        font-family: serif;
+        font-size: 30px;
+        color: #000000;
+        text-align: center;
+    }
+    
+
+
+    
+    
+    /*////////////////////////////colunas/////////////////////////////////////////*/
+
+    
+    
+
+
+    .column {
+           float: left;
+           padding: 15px;
+      }
+      
+      .column.descri {
+
+           width: 50%;
+          
+      }
+      
+      .column.descrifotos {
+          width: 50%;
+      }
+      .oquefaze:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        
+        @media screen and (max-width: 600px) {
+             .column.descri, .column.descrifotos {
+              width: 100%;
+             }
+        }
+        
+        .column.descri h2{
+            
+            text-align: center;
+        }
+        
+        .column.descri p{
+            
+            text-align: justify;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+        
+        .column.descrifotos h2{
+            
+            text-align: center;
+        }
+        
+        .column.descrifotos p{
+            
+            text-align: justify;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+        
+        
+
+
+        
+        
+        /*/////////////////////// Galeri///////////////////////////*/
+        
+        
+        
+        div.galle {
+            margin: 5px;
+            border-radius: 10px;
+            float: left;
+            width: 150px;
+        }
+        
+        div.galle img {
+             width: 100%;
+             height: auto;
+             border-radius: 10px;
+        }
+        
+        
+        
+        .image img{
+         width: 100%;
+         height: 450px;
+        background-image:url("../imagens/final.jpg");
+    }
+    
+    
+    
+    .centro-titulo-o h1 {
+        font-family: serif;
+        font-style: initial;
+        font-size: 30px;
+        color: #000000;
+        text-align: center;
+        padding-top: 10px;
+    }
+    
+    .centro-titulo-o {
+        width: 100%;
+        height: 50px;
+        background-color: #3cb371;
+        margin-top: 0px;
+    }
+    
+    
+    .oquefaze {
+        margin-top: 30px;
+    }
+        
+        
+        
+          /*/////////////////////// Projetos Esquerdo///////////////////////////*/
+          
+          
+          
+          
+          .projecoluesquer {
+               width: 95%;
+               height: 250px;
+            margin-left: 10px;
+            margin-top: 70px;
+            background-color: #3cb371;
+              
+          }
+          
+          .esquerda{
+              width: 50%;
+              height: 250px;
+              float: left;
+          }
+          
+          .esquerda h2 {
+              font-size: 15px;
+              font-style: inherit;
+              font-family: sans-serif;
+              color: #ffffff;
+              margin-top: 20px;
+              margin-left: 20px;
+              margin-right: 20px;
+              text-align: center;
+        
+  
+          }
+          
+          .borda {
+              width: 40%;
+              margin-left: 70px;
+              margin-top: 0px;
+              margin-bottom: 8px;
+              border-bottom-style: solid;
+              border-width: 1px;
+              border-color: #ffffff;
+              
+              
+          }
+          
+          .esquerda h3 {
+              font-size: 23px;
+              font-family: serif;
+              color: #fffff0;
+              margin-top: 40px;
+              margin-left: 20px;
+              margin-right: 20px;
+              margin-bottom: 6px;
+              text-align: center;
+              text-decoration: none;
+  
+          }
+          
+          
+          
+          
+          
+         .direita {
+              width: 50%;
+              height: 250px;
+              float: left;
+              background-image:url("../imagens/intelbras.jpeg");
+              background-repeat: no-repeat;
+              background-size: cover;
+              text-align: center;
+
+          }
+          .direitaopaca{
+              width: 100%;
+              height: 250px;
+              float: left;
+              text-decoration: none;
+              opacity: 0;
+              transition: opacity .2s linear;
+              background-color: rgba(0,0,0,.7);
+              text-align: center;
+          }
+          
+          .direita:hover .direitaopaca{
+              opacity: 1;
+              text-decoration: none;
+          }
+         
+          .direita h4{
+         
+              color: #00ffff;
+              margin-top: 50%;
+              text-decoration: none;
+              font-size: 20px; 
+               border-bottom-style: solid;
+              border-top-style: solid;
+              border-width: 2px;
+              padding-bottom: 10px;
+              padding-top: 10px;
+              margin-left: 70px;
+              margin-right: 70px;
+          }
+         
+          .direita a{
+              text-decoration: none;
+              
+          }
+          
+          
+          
+         /*/////////////////////// Projetos Esquerdo 2///////////////////////////*/ 
+          
+         
+         
+          
+          
+          .projecoluesquer2 {
+               width: 95%;
+               height: 250px;
+            margin-left: 10px;
+            margin-top: 80px;
+            margin-bottom: 80px;
+            background-color: #3cb371;
+              
+          }
+          
+          .esquerda2{
+              width: 50%;
+              height: 250px;
+              float: left;
+          }
+          
+          .esquerda2 h2 {
+              font-size: 15px;
+              font-style: inherit;
+              font-family: sans-serif;
+              color: #ffffff;
+              margin-top: 20px;
+              margin-left: 20px;
+              margin-right: 20px;
+              text-align: center;
+        
+  
+          }
+          
+          .esquerda2 h3 {
+              font-size: 23px;
+              font-family: serif;
+              color: #fffff0;
+              margin-top: 40px;
+              margin-left: 20px;
+              margin-right: 20px;
+              margin-bottom: 6px;
+              text-align: center;
+              
+  
+          }
+          
+          
+          
+          
+          
+         
+         .direita2 {
+              width: 50%;
+              height: 250px;
+              float: left;
+              background-image:url("../imagens/intelbras.jpeg");
+              background-repeat: no-repeat;
+              background-size: cover;
+              text-align: center;
+
+          }
+          .direitaopaca{
+              width: 100%;
+              height: 250px;
+              float: left;
+              text-decoration: none;
+              opacity: 0;
+              transition: opacity .2s linear;
+              background-color: rgba(0,0,0,.7);
+              text-align: center;
+          }
+          
+          .direita2:hover .direitaopaca{
+              opacity: 1;
+              text-decoration: none;
+          }
+         
+          .direita2 h4{
+         
+              color: #00ffff;
+              margin-top: 50%;
+              text-decoration: none;
+              font-size: 20px; 
+               border-bottom-style: solid;
+              border-top-style: solid;
+              border-width: 2px;
+              padding-bottom: 10px;
+              padding-top: 10px;
+              margin-left: 70px;
+              margin-right: 70px;
+          }
+         
+          .direita2 a{
+              text-decoration: none;
+              
+          }
+          
+          
+          
+          
+          
+          
+          
+          /*/////////////////////// Projetos Direito///////////////////////////*/ 
+          
+          
+          
+          
+          
+          
+          
+          .projecoludireito {
+               width: 95%;
+               height: 250px;
+              /* border-style: solid;
+            border-width: 1px; 
+            border-color: #ff69b4;*/
+            margin-left: 10px;
+            margin-top: 354px;
+            background-color: #3cb371;
+              
+          }
+          
+          .esquerdadireito{
+              width: 50%;
+              height: 250px;
+              float: left;
+          }
+          
+          .esquerdadireito h2 {
+              font-size: 15px;
+              font-style: inherit;
+              font-family: sans-serif;
+              color: #ffffff;
+              margin-top: 20px;
+              margin-left: 20px;
+              margin-right: 20px;
+              text-align: center;
+        
+  
+          }
+          
+          .esquerdadireito h3 {
+              font-size: 23px;
+              font-family: serif;
+              color: #fffff0;
+              margin-top: 40px;
+              margin-left: 20px;
+              margin-right: 20px;
+              margin-bottom: 6px;
+              text-align: center;
+              
+  
+          }
+          
+          
+          
+          
+          
+          
+          
+         /*.direitadireito{
+              width: 50%;
+              height: 250px;
+              float: left;
+              background-color: blue;
+              
+          }*/
+         
+          .direitadireito {
+              width: 50%;
+              height: 250px;
+              float: left;
+              background-image:url("../imagens/intelbras.jpeg");
+              background-repeat: no-repeat;
+              background-size: cover;
+              text-align: center;
+
+          }
+          .direitaopaca{
+              width: 100%;
+              height: 250px;
+              float: left;
+              text-decoration: none;
+              opacity: 0;
+              transition: opacity .2s linear;
+              background-color: rgba(0,0,0,.7);
+              text-align: center;
+          }
+          
+          .direitadireito:hover .direitaopaca{
+              opacity: 1;
+              text-decoration: none;
+          }
+         
+          .direitadireito h4{
+         
+              color: #00ffff;
+              margin-top: 50%;
+              text-decoration: none;
+              font-size: 20px; 
+               border-bottom-style: solid;
+              border-top-style: solid;
+              border-width: 2px;
+              padding-bottom: 10px;
+              padding-top: 10px;
+              margin-left: 70px;
+              margin-right: 70px;
+          }
+         
+          .direitadireito a{
+              text-decoration: none;
+              
+          }
+          
+          
+          
+          
+          
+          /*/////////////////////// Projetos Direito2///////////////////////////*/ 
+          
+          
+          
+          
+          
+          .projecoludireito2 {
+               width: 95%;
+               height: 250px;
+              /* border-style: solid;
+            border-width: 1px; 
+            border-color: #ff69b4;*/
+            margin-left: 10px;
+            margin-top: 80px;
+            background-color: #3cb371;
+              
+          }
+          
+          .esquerdadireito2{
+              width: 50%;
+              height: 250px;
+              float: left;
+          }
+          
+          .esquerdadireito2 h2 {
+              font-size: 15px;
+              font-style: inherit;
+              font-family: sans-serif;
+              color: #ffffff;
+              margin-top: 20px;
+              margin-left: 20px;
+              margin-right: 20px;
+              text-align: center;
+        
+  
+          }
+          
+          .esquerdadireito2 h3 {
+              font-size: 23px;
+              font-family: serif;
+              color: #fffff0;
+              margin-top: 40px;
+              margin-left: 20px;
+              margin-right: 20px;
+              margin-bottom: 6px;
+              text-align: center;
+              
+  
+          }
+          
+          
+          
+          
+         
+         
+         .direitadireito2 {
+              width: 50%;
+              height: 250px;
+              float: left;
+              background-image:url("../imagens/intelbras.jpeg");
+              background-repeat: no-repeat;
+              background-size: cover;
+              text-align: center;
+
+          }
+          .direitaopaca{
+              width: 100%;
+              height: 250px;
+              float: left;
+              text-decoration: none;
+              opacity: 0;
+              transition: opacity .2s linear;
+              background-color: rgba(0,0,0,.7);
+              text-align: center;
+          }
+          
+          .direitadireito2:hover .direitaopaca{
+              opacity: 1;
+              text-decoration: none;
+          }
+         
+          .direitadireito2 h4{
+         
+              color: #00ffff;
+              margin-top: 50%;
+              text-decoration: none;
+              font-size: 20px; 
+               border-bottom-style: solid;
+              border-top-style: solid;
+              border-width: 2px;
+              padding-bottom: 10px;
+              padding-top: 10px;
+              margin-left: 70px;
+              margin-right: 70px;
+          }
+         
+          .direitadireito2 a{
+              text-decoration: none;
+              
+          }
+          
+          
+          
+          
+          /*/////////////////////// Projetos Titulo///////////////////////////*/ 
+          
+          
+          
+          
+          .titupro h1{
+              
+              text-align: left;
+              margin-top: 250px;
+              margin-left: 20px;
+              
+          }

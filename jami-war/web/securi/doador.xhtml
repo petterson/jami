@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Doador</title>
+      <style>
+            div.botao {
+      margin-left: 390px;
+    }
+        
+    body {
+         background-color: #3cb371;
+    }
+    
+    div.cadastro {
+        margin-top: 20px;
+        margin: 0px 0px 0px 100px; 
+         
+        
+    }
+    
+    .ocupada .ui-panel-titlebar {
+    background: #3cb371;
+    color: #000000;
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+  
+          
+        </style>
+    </h:head>
+    <h:body>
+        <h:form id="formPermissoes"> 
+        <p:messages autoUpdate="true"/>       
+           
+        <p:panel id="panel" header="Cadastro de Doador" styleClass="ocupada"> 
+               <div class="cor_painel">
+               <div class="cadastro">
+           <h:panelGrid columns="6" cellpadding="5">  
+            <h:outputLabel value="Nome:" />
+            <h:inputText value="#{doadorJSFManagedBean.nome_doador}" size="34" />
+            <h:outputLabel value="Fone:" />
+            <p:inputMask id="fone" value="#{doadorJSFManagedBean.fone_doador}" mask="(99) 9999-9999" size="12" />
+            <h:outputLabel for="email_doador" value="Email :" />
+            <p:inputText id="email_doador" value="#{doadorJSFManagedBean.email_doador}" size="30"/>
+            <p:watermark for="email_doador" value="digiteumemail@valido " />
+            <p:message for="email_doador" display="tooltip" />
+           </h:panelGrid>
+           <h:panelGrid columns="4" cellpadding="5"> 
+            <h:outputLabel for="cpf" value="CPF:" />
+            <p:inputMask id="cpf" value="#{doadorJSFManagedBean.cpf_doador}" mask="999.999.999-99" size="11" />
+            <h:outputLabel for="data_nasc" value="Data Nascimento:" />
+            <p:calendar id="data_nasc" timeZone="America/Sao_Paulo" pattern="dd/MM/yyyy" mask="true" 
+                        locale="pt_BR" value="#{doadorJSFManagedBean.data_nasc_doador}" size="10" ></p:calendar>
+           </h:panelGrid>
+               </div>
+                   <br/>
+                   <br/>
+                    <br/>
+                    <p:growl id="growl" life="2000" showDetail="true" sticky="true" />
+        <div class="botao">  
+            <p:commandButton id="cadastrar" value="CADASTRAR" update="panel" action="#{doadorJSFManagedBean.cadastrarDoador()}" 
+                             style=" background-color: #00ff00" ajax="false">
+            <p:resetInput target="panel" />
+            </p:commandButton>
+            <p:commandButton id="buscar" value="BUSCAR" update="panel" action="#{doadorJSFManagedBean.buscarDoador()}" 
+                                     style=" background-color: #00ff00" ajax="false">
+            <p:resetInput target="panel" />
+            </p:commandButton>
+            <p:commandButton id="atualizar" value="ATUALIZAR" update="panel" action="#{doadorJSFManagedBean.atualizarDoador()}" 
+                                 style=" background-color: #00ff00" ajax="false">
+            <p:resetInput target="panel" />
+            </p:commandButton>
+            <p:commandButton id="excluir" value="EXCLUIR" update="panel" action="#{doadorJSFManagedBean.excluirDoador()}" 
+                                         style=" background-color: #00ff00" ajax="false">  
+            <p:resetInput target="panel" />
+            </p:commandButton>
+        </div>
+               </div>
+        </p:panel>
+    </h:form>
+    </h:body>
+</html>
+
+

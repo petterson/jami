@@ -1,0 +1,134 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Lista Atividade</title>
+        <style>
+            div.botao {
+      margin-left: 550px;
+    }
+        
+    body {
+         background-color: #3cb371;
+    }
+    
+    .selecione{
+        margin-top: 20px;
+        margin-left: 320px;
+    }
+    
+    
+    .ocupada .ui-panel-titlebar {
+    background: #3cb371;
+    color: #000000;
+    text-align: center;
+    font-size: 20px;
+}
+.ui-panel{
+    
+    height: 870px;
+}
+         .ui-datatable {
+      margin-bottom:20px;
+  }
+ 
+  .ui-datatable-frozenlayout-left {
+      width:40%;
+  }
+ 
+  .ui-datatable-frozenlayout-right {
+      width:120%;
+  }
+        .topnav-home {
+        overflow: hidden;
+        padding-top: 10px;
+    }
+    
+   .topnav-home a {
+        float: left;
+        display: block;
+        color: #00ff00;
+        font-style: initial;
+        font-weight: bold;
+        padding: 14px 8px;
+        text-decoration: none;
+        margin-top: 0px;
+     }
+     
+     .topnav-home a:hover {
+         color: #ff007f;
+                 
+     }
+      div.botaocadastros {
+          margin-left: 550px;
+      }
+  
+    </style>
+    </h:head>
+    <h:body>
+        <h:form id="formPermissoes"> 
+               <p:messages autoUpdate="true"/>
+            
+        <p:panel id="panel" header="Total de Aluno Por Atividade" styleClass="ocupada">
+            <div class="selecione">
+                <h:panelGrid columns="4" cellpadding="5"> 
+            <h:outputLabel for="atividade" value=" Selecione a Atividades:" />
+            <h:selectOneMenu id="atividade" value="#{listaAlunoAtividadeJSFManagedBean.nome_atividade_selecionada}" 
+                             valueChangeListener="#{listaAlunoAtividadeJSFManagedBean.getAtividades(event)}">
+            <f:selectItem itemLabel="-- Selecione --" />
+            <f:selectItems id="ativadades" value="#{listaAlunoAtividadeJSFManagedBean.list_atividades}" /> 
+            <p:ajax event="change" process="@this" update="formPermissoes: total, tbatividade, imprimir" 
+                    listener="#{listaAlunoAtividadeJSFManagedBean.getAtividades(event)}"/>
+            </h:selectOneMenu> 
+            <h:outputLabel for="total" value="Total de Alunos:" />
+            <h:outputText id="total" value="#{listaAlunoAtividadeJSFManagedBean.total_alunos}" style="background: #00ff00"/>
+           </h:panelGrid> 
+           </div>
+           <div class="botaocadastros">
+                <div class="topnav-home">
+                   <a href="http://localhost:8080/jami-war/securio/operacional.xhtml">VOLTAR</a>
+                </div> 
+            </div>
+            <br/>
+            <p:dataTable id="tbatividade" var="ent" value="#{listaAlunoAtividadeJSFManagedBean.list_aluno_atividade}" 
+                         scrollable="true" scrollHeight="520">
+                       <f:facet name="header">
+                      TOTAL DE ALUNOS POR ATIVIDADE
+                      </f:facet>
+                      <p:column headerText="Nome" style="width: 160px">
+                          <h:outputText value="#{ent.nome}"/>
+                      </p:column>
+                      <p:column headerText="Sexo" style="width: 60px">
+                          <h:outputText value="#{ent.sexo}"/>
+                      </p:column>
+                      <p:column headerText="Situação" style="width: 60px">
+                          <h:outputText value="#{ent.situacao}"/>
+                      </p:column>
+                      <p:column headerText="Mes" style="width: 70px">
+                           <h:outputText value="#{ent.data_matricula}">
+                           <f:convertDateTime pattern="dd/MM/yyyy" />
+                           </h:outputText>
+                      </p:column>
+                       <p:column headerText="Eslola" style="width: 140px">
+                           <h:outputText value="#{ent.escola}"/>
+                      </p:column>
+                       <p:column headerText="Turma" style="width: 200px">
+                           <h:outputText value="#{ent.list_turma}" />
+                       </p:column>
+                    </p:dataTable>
+                    <br/>
+                    <br/>
+            <div class="botao">  
+                <p:commandButton id="imprimir" value="IMPRIMIR" update="panel" action="#{listaAlunoAtividadeJSFManagedBean.imprimirLista()}" 
+                                 style=" background-color: #00ff00" rendered="#{listaAlunoAtividadeJSFManagedBean.imprimir}" ajax="false"> 
+            <p:resetInput target="panel" />
+            </p:commandButton>
+            </div>
+        </p:panel>
+    </h:form>
+    </h:body>
+</html>
+

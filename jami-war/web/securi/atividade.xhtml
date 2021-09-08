@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Cadastro de Atividade</title>
+        <style>
+            div.botao {
+      margin-left: 350px;
+    }
+        
+    body {
+         background-color: #3cb371;
+    }
+    
+    div.cadastro {
+        margin-top: 10px;
+        margin: 0px 0px 0px 150px;
+         
+        
+    }
+    
+    .ocupada .ui-panel-titlebar {
+    background: #3cb371;
+    color: #000000;
+    text-align: center;
+    font-size: 20px;
+}
+
+              .topnav-home {
+        overflow: hidden;
+        padding-top: 10px;
+    }
+    
+   .topnav-home a {
+        float: left;
+        display: block;
+        color: #0000ff;
+        font-style: initial;
+        font-weight: bold;
+        padding: 14px 8px;
+        text-decoration: none;
+        margin-top: 20px;
+     }
+     
+     .topnav-home a:hover {
+         color: #ff007f;
+                 
+     }
+      div.botaocadastros {
+          margin-left: 500px;
+      }
+
+        </style>
+    </h:head>
+    <h:body>
+         <h:form id="formPermissoes"> 
+               <p:messages autoUpdate="true"/>
+ 
+               <p:panel id="panel" header="Cadastro de Atividade" styleClass="ocupada"> 
+               <div class="cor_painel">
+               <div class="cadastro">
+           <h:panelGrid columns="6" cellpadding="5">  
+            <h:outputLabel  for="nome" value="Nome:" />
+            <h:inputText id="nome" value="#{atividadeJSFManagedBean.nome_atividade}" size="38" />
+            <h:outputLabel for="data" value="Data Início:" />
+            <p:calendar id="data" timeZone="America/Sao_Paulo" pattern="dd/MM/yyyy" locale="pt_BR" value="#{atividadeJSFManagedBean.data_inicio}" maxdate="#{atividadeJSFManagedBean.dataAtual()}" size="10" ></p:calendar>
+            <h:outputLabel for="turma" value="Turma: " />
+            <p:selectCheckboxMenu id="turma" value="#{atividadeJSFManagedBean.nome_turmas_selecionadas}" label="Turmas"     
+            filter = "true" filterMatchMode = "startsWith" panelStyle = "width: 250px" >
+                 <f:selectItems id="turmas" value="#{atividadeJSFManagedBean.nome_turmas}" /> 
+            </p:selectCheckboxMenu>
+           </h:panelGrid> 
+            </div>
+            <br/>
+            <!--<div class="botaocadastros">
+                <div class="topnav-home">
+                   <a href="http://localhost:8080/jami-war/securi/turma.xhtml">CADASTRO TURMA</a>
+                   </div>
+            </div>-->
+            <br/>
+            <br/>
+        <div class="botao">  
+            <p:commandButton id="cadastrar" value="CADASTRAR" update="panel" action="#{atividadeJSFManagedBean.cadastrarAtividade()}" 
+                             style=" background-color: #00ff00" ajax="false">
+            <p:resetInput target="panel" />
+            </p:commandButton>
+            <p:commandButton id="buscar" value="BUSCAR" update="panel" action="#{atividadeJSFManagedBean.buscarAtividade()}" 
+                             style=" background-color: #00ff00" ajax="false"> 
+            <p:resetInput target="panel" />
+            </p:commandButton>
+            <p:commandButton id="atualizar" value="ATUALIZAR" update="panel" action="#{atividadeJSFManagedBean.atualizarAtividade()}" 
+                             style=" background-color: #00ff00" ajax="false"> 
+            <p:resetInput target="panel" />
+            </p:commandButton>
+            <p:commandButton id="excluir" value="EXCLUIR" update="panel" action="#{atividadeJSFManagedBean.excluirAtividade()}" 
+                             style=" background-color: #00ff00" ajax="false"> 
+            <p:resetInput target="panel" />
+            </p:commandButton>
+        </div>
+            </div>
+         </p:panel> 
+        </h:form>
+    </h:body>
+</html>
+
+
+

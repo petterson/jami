@@ -1,0 +1,143 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 06/02/2019, 17:40:15
+    Author     : petter
+*/
+
+*{
+          box-sizing:border-box;     
+          margin-top: 0px;
+         }
+        
+    body {
+         width: 100%;
+          background-color: #98fb98;
+    }
+    
+    .centro{
+        height: 800px;
+        width: 100%;
+        background-color: #98fb98;
+    }
+    
+    .centro h1 {
+        font-family: serif;
+        font-size: 30px;
+        color: #000000;
+        text-align: center;
+        padding-top: 10px;
+    }
+    
+   /* .centro-titulo {
+        width: 100%;
+        height: 50px;
+        background-color: #3cb371;
+        margin-top: 0px;
+    }*/
+   
+   
+    .image img{
+         width: 100%;
+         height: 450px;
+        background-image:url("../imagens/final.jpg");
+    }
+    
+    
+    
+    
+    /*////////////////ladoesquerdo//////////////////////////////////////*/
+    
+    
+    
+    
+    .centro-titulo-como h1 {
+        font-family: serif;
+        font-style: initial;
+        font-size: 30px;
+        color: #000000;
+        text-align: center;
+        padding-top: 10px;
+    }
+    
+    .centro-titulo-como {
+        width: 100%;
+        height: 50px;
+        background-color: #3cb371;
+        margin-top: 0px;
+    }
+    
+    
+    .centro-esquerdo {
+        width: 45%;
+        height: 300px;
+        float: left;
+        padding-top: 60px;
+    } 
+    
+    .centro-esquerdo h2{
+        text-align: center;
+        margin-left: 10px;
+    }
+    
+     .centro-esquerdo h3{
+        font-size: 23px;
+        text-align: center;
+        margin-left: 10px;
+        margin-top: 50px; 
+    }
+    
+    .centro-esquerdo p{
+        
+        text-align: justify;
+        margin-left: 70px;
+        margin-right: 30px;
+    }
+    
+    
+    
+    
+     /*////////////////ladoedireitoo//////////////////////////////////////*/
+     
+    
+    
+    .centro-direito {
+         width: 55%;
+        height: 300px;
+        float: left;
+        text-align: center;
+        padding-top: 60px;
+    }
+    
+    .centro-direito img{
+        
+        /*margin-left: 30px;*/
+        height: 280px;
+        border-radius: 10px;
+    }
+    
+    
+
+    /*////////////////ladoedireito2//////////////////////////////////////*/
+    
+    
+    
+    
+    .centro-direito-img2 {
+         width: 55%;
+        height: 300px;
+        float: right;
+        text-align: center;
+        padding-top: 60px;
+    }
+    
+    .centro-direito-img2 img{
+               
+        margin-top: 20px;
+        height: 280px;
+        border-radius: 10px;
+    }
+    

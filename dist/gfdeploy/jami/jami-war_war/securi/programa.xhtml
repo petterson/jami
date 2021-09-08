@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Programa</title>
+ <style>
+            div.botao {
+      margin-left: 370px;
+    }
+        
+    body {
+         background-color: #3cb371;
+    }
+    
+    div.cadastro {
+        margin-top: 10px;
+        margin: 0px 0px 0px 130px; 
+         
+        
+    }
+    
+    .ocupada .ui-panel-titlebar {
+    background: #3cb371;
+    color: #000000;
+    text-align: center;
+    font-size: 20px;
+}
+
+      .topnav-home {
+        overflow: hidden;
+        padding-top: 10px;
+    }
+    
+   .topnav-home a {
+        float: left;
+        display: block;
+        color: #0000ff;
+        font-style: initial;
+        font-weight: bold;
+        padding: 14px 8px;
+        text-decoration: none;
+        margin-top: 20px;
+     }
+     
+     .topnav-home a:hover {
+         color: #ff007f;
+                 
+     }
+      div.botaocadastros {
+          margin-left: 490px;
+      }
+
+        </style>
+    </h:head>
+    <h:body>
+        <h:form id="formPermissoes"> 
+        <p:messages autoUpdate="true"/>
+ 
+        <p:panel id="panel" header="Cadastro de Programa" styleClass="ocupada"> 
+               <div class="cor_painel">
+               <div class="cadastro">
+           <h:panelGrid columns="6" cellpadding="5">  
+            <h:outputLabel for="nome" value="Nome:" />
+            <h:inputText id="nome" value="#{programaJSFManagedBean.nome_programa}" size="38" />
+            <h:outputLabel for="data" value="Data Criação:" />
+            <p:calendar id="data" pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo" locale="pt_BR" mask="true" 
+                        value="#{programaJSFManagedBean.data_inicio}" size="10" ></p:calendar>
+             <h:outputLabel for="projetos" value="Projeto: " />
+             <p:selectCheckboxMenu id="projetos" value="#{programaJSFManagedBean.nome_prjetos_selecionados}" 
+                                   label="Projetos" filter = "true" filterMatchMode = "startsWith" panelStyle = "width: 250px" > 
+            <f:selectItems id="programa_projeto" value="#{programaJSFManagedBean.nome_projetos}" />    
+            </p:selectCheckboxMenu>  
+            </h:panelGrid> 
+             <br/>
+             <br/>
+            <h:panelGrid columns="2" cellpadding="5">
+            <h:outputLabel for="descricao" value="Descrição:" />
+            <p:inputTextarea id="descricao" rows="2" cols="80" value="#{programaJSFManagedBean.descricao_programa}" queryDelay="750" minQueryLength="4">
+            </p:inputTextarea>
+            </h:panelGrid>
+            </div>
+            <br/>
+            <div class="botaocadastros">
+                <div class="topnav-home">
+                   <a href="http://localhost:8080/jami-war/securi/projeto.xhtml">CADASTRO PROJETO</a>
+                   </div>
+            </div>
+            <br/>
+            <br/>
+            <p:growl id="growl" life="2000" showDetail="true" sticky="true" />
+        <div class="botao">  
+            <p:commandButton id="cadastrar" value="CADASTRAR" update="panel" action="#{programaJSFManagedBean.cadastrarPrograma()}" 
+                             style=" background-color: #00ff00">
+            <p:resetInput target="panel" />
+            </p:commandButton>
+            <p:commandButton id="buscar" value="BUSCAR" update="panel" action="#{programaJSFManagedBean.buscaPrograma()}" 
+                             style=" background-color: #00ff00">
+            <p:resetInput target="panel" />
+            </p:commandButton>
+            <p:commandButton id="atualizar" value="ATUALIZAR" update="panel" action="#{programaJSFManagedBean.atualisaPrograma()}" 
+                             style=" background-color: #00ff00"> 
+            <p:resetInput target="panel" />
+            </p:commandButton>
+            <p:commandButton id="excluir" value="EXCLUIR" update="panel" action="#{programaJSFManagedBean.excluirPrograma()}" 
+                             style=" background-color: #00ff00"> 
+            <p:resetInput target="panel" />
+            </p:commandButton>
+        </div>
+            </div>
+         </p:panel> 
+        </h:form>
+</h:body>
+</html>
+
